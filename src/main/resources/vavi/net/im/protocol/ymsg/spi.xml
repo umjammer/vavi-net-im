@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+
+<spi>
+  <title>Yahoo! Messenger Protocol</title>
+  <description>Yahoo! Messenger Service</description>
+  <author>vavi</author>
+  <copyright>Copyright (c) 2004 by vavi</copyright>
+  <version>0.3.9</version>
+</spi>
