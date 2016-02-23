@@ -16,7 +16,7 @@ import vavi.net.im.protocol.ymsg.YmsgPacket;
 
 
 /**
- * ƒRƒ“ƒ^ƒNƒg.
+ * ã‚³ãƒ³ã‚¿ã‚¯ãƒˆ.
  *
  * @event 15
  *

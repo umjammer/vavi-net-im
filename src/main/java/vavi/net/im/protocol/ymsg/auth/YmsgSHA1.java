@@ -24,8 +24,8 @@ import java.security.MessageDigest;
  * code and objects when not actually being debugged (to reduce its deployment
  * footprint!)
  * 
- * {@link java.security.MessageDigestSpi} ‚ğ implements ‚µ‚Ä‚¢‚È‚¢‚Ì‚Í
- * {@link #setBitCount(long)} ‚ğƒ†[ƒU‚ªƒAƒNƒZƒX‚Å‚«‚é‚æ‚¤‚É‚·‚é‚½‚ßB
+ * {@link java.security.MessageDigestSpi} ã‚’ implements ã—ã¦ã„ãªã„ã®ã¯
+ * {@link #setBitCount(long)} ã‚’ãƒ¦ãƒ¼ã‚¶ãŒã‚¢ã‚¯ã‚»ã‚¹ã§ãã‚‹ã‚ˆã†ã«ã™ã‚‹ãŸã‚ã€‚
  */
 public class YmsgSHA1 extends MessageDigest {
     private int[] h, w;

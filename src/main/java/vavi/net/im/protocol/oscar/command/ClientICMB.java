@@ -58,7 +58,7 @@ public class ClientICMB extends Command {
 
         TLV clientFutures = new TLV(TLV_CLIENT_FUTURE, CLI_FUTURE); // 0x0501
 
-        // TODO U‚è•ª‚¯
+        // TODO æŒ¯ã‚Šåˆ†ã‘
         int encoding = 0x0002; // UTF-16BE
 
         byte[] msgTextBytes = null;

@@ -231,11 +231,11 @@ public abstract class Protocol {
     private Map<Object, Session> sessions = new HashMap<Object, Session>();
     /** */
     protected Buddy self;
-    /** ƒOƒ‹[ƒv */
+    /** ã‚°ãƒ«ãƒ¼ãƒ— */
     protected List<Group> groups = new ArrayList<Group>();
-    /** ƒOƒ‹[ƒv */
+    /** ã‚°ãƒ«ãƒ¼ãƒ— */
     protected Group defaultGroup = new Group("<default>");
-    /** ‹Ö~ƒŠƒXƒg */
+    /** ç¦æ­¢ãƒªã‚¹ãƒˆ */
     protected Group ignored = new Group("<ignored>");
 
     /** */
@@ -335,17 +335,17 @@ Debug.println("session not found: " + buddy.getUsername());
         return session;
     }
 
-    /** ‚·‚Å‚É Protocol#defaultListener ‚ª’Ç‰Á‚³‚ê‚Ä‚¢‚Ü‚·B */
+    /** ã™ã§ã« Protocol#defaultListener ãŒè¿½åŠ ã•ã‚Œã¦ã„ã¾ã™ã€‚ */
     protected IMSupport listeners = new IMSupport();
 
     /**
-     * IMListener ‚ğ’Ç‰Á‚µ‚Ü‚·D
+     * IMListener ã‚’è¿½åŠ ã—ã¾ã™ï¼
      */
     public void addIMListener(IMListener listener) {
         listeners.addIMListener(listener);
     }
 
-    /** IMListener ‚ğíœ‚µ‚Ü‚·D */
+    /** IMListener ã‚’å‰Šé™¤ã—ã¾ã™ï¼ */
     public void removeIMListener(IMListener listener) {
         listeners.removeIMListener(listener);
     }
@@ -475,7 +475,7 @@ Debug.println("session not found: " + buddy.getUsername());
     protected abstract void sendInstantMessageInternal(Session session, Message message) throws IOException;
 
     /**
-     * ƒ^ƒCƒsƒ“ƒO‚ğŠJn‚·‚éê‡‚Ég—p‚µ‚Ü‚·B
+     * ã‚¿ã‚¤ãƒ”ãƒ³ã‚°ã‚’é–‹å§‹ã™ã‚‹å ´åˆã«ä½¿ç”¨ã—ã¾ã™ã€‚
      */
     public void startTyping() throws IOException {
         for (Session session : sessions.values()) {
@@ -491,7 +491,7 @@ Debug.println("session not found: " + buddy.getUsername());
     protected abstract void startTypingInternal(Buddy buddy) throws IOException;
 
     /**
-     * ƒ^ƒCƒsƒ“ƒO‚ğI—¹‚·‚éê‡‚Ég—p‚µ‚Ü‚·B
+     * ã‚¿ã‚¤ãƒ”ãƒ³ã‚°ã‚’çµ‚äº†ã™ã‚‹å ´åˆã«ä½¿ç”¨ã—ã¾ã™ã€‚
      */
     public void stopTyping() throws IOException {
         for (Session session : sessions.values()) {

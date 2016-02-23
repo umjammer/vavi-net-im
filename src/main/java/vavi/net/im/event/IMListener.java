@@ -12,8 +12,8 @@ import java.util.EventListener;
 
 /**
  * IMListener. 
- * ƒŠƒXƒi‚ğì¬‚·‚éê‡‚ÍA‚í‚©‚è‚â‚·‚¢ƒvƒƒOƒ‰ƒ€‚ğ‘‚­‚½‚ß‚É
- * {@link vavi.net.im.event.IMAdapter} ‚ğg—p‚µ‚Ä‚­‚¾‚³‚¢B
+ * ãƒªã‚¹ãƒŠã‚’ä½œæˆã™ã‚‹å ´åˆã¯ã€ã‚ã‹ã‚Šã‚„ã™ã„ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’æ›¸ããŸã‚ã«
+ * {@link vavi.net.im.event.IMAdapter} ã‚’ä½¿ç”¨ã—ã¦ãã ã•ã„ã€‚
  * @see vavi.net.im.event.IMAdapter
  * @author <a href="mailto:vavivavi@yahoo.co.jp">Naohide Sano</a> (nsano)
  * @version 0.00 051102 nsano initial version <br>

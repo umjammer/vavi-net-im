@@ -42,10 +42,10 @@ public class Session implements Serializable {
      */
     protected List<Buddy> buddies = new ArrayList<Buddy>();
 
-    /** ƒZƒbƒVƒ‡ƒ“‚Ì–¼‘O */
+    /** ã‚»ãƒƒã‚·ãƒ§ãƒ³ã®åå‰ */
     private String name;
 
-    /** 1 ‘Î 1 ‚Ìê‡ falseA1 ‘Î‘½‚Ìê‡ true */
+    /** 1 å¯¾ 1 ã®å ´åˆ falseã€1 å¯¾å¤šã®å ´åˆ true */
     private boolean groupSession;
 
     /** */

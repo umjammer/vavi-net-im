@@ -16,7 +16,7 @@ import vavi.util.Debug;
 
 
 /**
- * PING óM.
+ * PING å—ä¿¡.
  *
  * @event 18
  *

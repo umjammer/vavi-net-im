@@ -21,7 +21,7 @@ import vavi.net.im.protocol.ymsg.YmsgPacket;
  * @version 0.00 041010 nsano initial version <br>
  */
 public abstract class Command {
-    /** •¶š—ñƒŠƒ\[ƒX */
+    /** æ–‡å­—åˆ—ãƒªã‚½ãƒ¼ã‚¹ */
     protected static final ResourceBundle rb = ResourceBundle.getBundle("vavi.net.im.protocol.ymsg.resources.ymsg", Locale.getDefault());
 
     /** */
@@ -31,7 +31,7 @@ public abstract class Command {
 
     protected IMSupport listeners;
 
-    /** IMListener ‚ğ’Ç‰Á‚µ‚Ü‚·D */
+    /** IMListener ã‚’è¿½åŠ ã—ã¾ã™ï¼ */
     public void setIMListeners(IMSupport listeners) {
         this.listeners = listeners;
     }

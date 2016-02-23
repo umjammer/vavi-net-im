@@ -14,7 +14,7 @@ import vavi.net.im.event.IMEvent.Name;
 
 
 /**
- * Ymsg ‚ÌƒCƒxƒ“ƒg Name ‚Å‚·D
+ * Ymsg ã®ã‚¤ãƒ™ãƒ³ãƒˆ Name ã§ã™ï¼
  * 
  * @author <a href="mailto:vavivavi@yahoo.co.jp">Naohide Sano</a> (nsano)
  * @version 0.00 030318 nsano initial version <br>
@@ -147,7 +147,7 @@ public enum YmsgEventName implements Name {
     messageReceived {
         /** do nothing */
         public IMEvent toIMEvent(IMEvent event) {
-            return event; // ‚±‚±‚Å‚Ío—ˆ‚È‚¢•ÏŠ·‚ª—v‚é‚æ
+            return event; // ã“ã“ã§ã¯å‡ºæ¥ãªã„å¤‰æ›ãŒè¦ã‚‹ã‚ˆ
         }
     },
     /**
@@ -180,7 +180,7 @@ public enum YmsgEventName implements Name {
     statusChanged {
         /** do nothing */
         public IMEvent toIMEvent(IMEvent event) {
-            return event; // ‚±‚±‚Å‚Ío—ˆ‚È‚¢•ÏŠ·‚ª—v‚é‚æ
+            return event; // ã“ã“ã§ã¯å‡ºæ¥ãªã„å¤‰æ›ãŒè¦ã‚‹ã‚ˆ
         }
     },
     /**
@@ -305,8 +305,8 @@ public enum YmsgEventName implements Name {
         }
     };
     /**
-     * ƒ[ƒJƒ‹‚È IMEvent ‚ğ”Ä—p‚Ì IMEvent ‚É•ÏŠ·‚µ‚Ü‚·B
-     * TODO ‚à‚µ‚©‚µ‚Ä‚±‚Ì‚â‚è•û‚æ‚­‚È‚¢‚©‚àH
+     * ãƒ­ãƒ¼ã‚«ãƒ«ãª IMEvent ã‚’æ±ç”¨ã® IMEvent ã«å¤‰æ›ã—ã¾ã™ã€‚
+     * TODO ã‚‚ã—ã‹ã—ã¦ã“ã®ã‚„ã‚Šæ–¹ã‚ˆããªã„ã‹ã‚‚ï¼Ÿ
      */
     public abstract IMEvent toIMEvent(IMEvent event);
 }

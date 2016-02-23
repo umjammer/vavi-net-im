@@ -42,21 +42,21 @@ public class YmsgMessageComponent extends TextComponent {
     public YmsgMessageComponent(String message) {
         String tmp = null;
 
-        // —]•ª‚È‰üs‚Ìíœ
+        // ä½™åˆ†ãªæ”¹è¡Œã®å‰Šé™¤
         String mes = message;
-        // ƒJƒ‰[‚Ìæ“¾
+        // ã‚«ãƒ©ãƒ¼ã®å–å¾—
         this.color = new Color(parseColor(message, tmp));
         mes = tmp;
-        // ƒXƒ^ƒCƒ‹‚Ìæ“¾ (–¢‘Î‰)
+        // ã‚¹ã‚¿ã‚¤ãƒ«ã®å–å¾— (æœªå¯¾å¿œ)
         tmp = removeColorAndStyle(mes);
         mes = tmp;
-        // ƒtƒHƒ“ƒg–¼‚Ìæ“¾
+        // ãƒ•ã‚©ãƒ³ãƒˆåã®å–å¾—
         this.font = new Font(parseFontName(mes, tmp), Font.PLAIN, parseFontSize(mes, tmp));
         mes = tmp;
-        // —]•ª‚Èƒ^ƒO‚Ìíœ
+        // ä½™åˆ†ãªã‚¿ã‚°ã®å‰Šé™¤
         mes = removeTags(mes);
 
-        // ƒƒbƒZ[ƒW‚Ì•Û‘¶
+        // ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®ä¿å­˜
         buffer.append(color);
         buffer.append("<font face=\"");
         buffer.append(font.getName());

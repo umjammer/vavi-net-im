@@ -13,18 +13,18 @@ import vavi.net.im.protocol.Protocol;
 
 
 /**
- * IM ‚ÌƒCƒxƒ“ƒg‚Å‚·D
+ * IM ã®ã‚¤ãƒ™ãƒ³ãƒˆã§ã™ï¼
  * 
  * @author <a href="mailto:vavivavi@yahoo.co.jp">Naohide Sano</a> (nsano)
  * @version 0.00 030318 nsano initial version <br>
  */
 public class IMEvent extends EventObject {
 
-    /** IM ƒCƒxƒ“ƒg–¼‚ğ•\‚·ƒCƒ“ƒ^[ƒtƒF[ƒX‚Å‚·B */
+    /** IM ã‚¤ãƒ™ãƒ³ãƒˆåã‚’è¡¨ã™ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã§ã™ã€‚ */
     public interface Name {
     }
 
-    /** IM ƒCƒxƒ“ƒg‚ÌŠî–{ ID –¼‚Å‚·B */
+    /** IM ã‚¤ãƒ™ãƒ³ãƒˆã®åŸºæœ¬ ID åã§ã™ã€‚ */
     public enum IMEventName implements Name {
         /**
          * Invoked when a protocol attempts start up.
@@ -316,10 +316,10 @@ public class IMEvent extends EventObject {
         sendInstantMessage;
     }
 
-    /** ƒCƒxƒ“ƒg‚Ì ID –¼ */
+    /** ã‚¤ãƒ™ãƒ³ãƒˆã® ID å */
     private Name name;
 
-    /** ƒCƒxƒ“ƒg‚Ìˆø” */
+    /** ã‚¤ãƒ™ãƒ³ãƒˆã®å¼•æ•° */
     private Object[] arguments;
 
     /**

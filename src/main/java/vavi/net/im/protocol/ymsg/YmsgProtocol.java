@@ -29,8 +29,8 @@ import vavi.util.Debug;
  * YmsgProtocol.
  *
  * <specification>
- * ƒƒ“ƒo‚Ì‚¢‚È‚¢ƒOƒ‹[ƒv‚Í‘¶İ‚µ‚È‚¢
- * ³Šm‚É‚ÍƒZƒbƒVƒ‡ƒ“‚ÌŠT”O‚Í‚È‚¢
+ * ãƒ¡ãƒ³ãƒã®ã„ãªã„ã‚°ãƒ«ãƒ¼ãƒ—ã¯å­˜åœ¨ã—ãªã„
+ * æ­£ç¢ºã«ã¯ã‚»ãƒƒã‚·ãƒ§ãƒ³ã®æ¦‚å¿µã¯ãªã„
  * </specification>
  *
  * @author <a href="mailto:vavivavi@yahoo.co.jp">Naohide Sano</a> (nsano)
@@ -234,7 +234,7 @@ Debug.println("here 3");
 
     //----
 
-    /** ‚ ‚ñ‚Ü‚µ‚«‚ê‚­‚È‚¢... */
+    /** ã‚ã‚“ã¾ã—ãã‚Œããªã„... */
     private class HookedIMSupport extends IMSupport {
         IMSupport backupListeners;
         HookedIMSupport(IMSupport backupListeners) {
@@ -247,8 +247,8 @@ Debug.println("here 3");
             backupListeners.removeIMListener(l);
         }
         /**
-         * ‚±‚±‚Å‚Í YmsgConnection ‚Ìƒf[ƒ^Œ^‚©‚ç IM library ‚Ìƒf[ƒ^Œ^‚Ö‚Ì•ÏŠ·‚Ì‚İ‚ğs‚¤‚±‚ÆB
-         * ÀÛ‚Ìˆ—‚Í YmsgConnection#defaultIMListener#eventHappened(IMEvent) ‚Ås‚¤B
+         * ã“ã“ã§ã¯ YmsgConnection ã®ãƒ‡ãƒ¼ã‚¿å‹ã‹ã‚‰ IM library ã®ãƒ‡ãƒ¼ã‚¿å‹ã¸ã®å¤‰æ›ã®ã¿ã‚’è¡Œã†ã“ã¨ã€‚
+         * å®Ÿéš›ã®å‡¦ç†ã¯ YmsgConnection#defaultIMListener#eventHappened(IMEvent) ã§è¡Œã†ã€‚
          */
         public void eventHappened(IMEvent event) throws IOException {
             Name name = event.getName();
@@ -256,10 +256,10 @@ Debug.println("here 3");
             if (name instanceof YmsgEventName) {
                 YmsgEventName eventName = (YmsgEventName) name;
 
-                // •ÏŠ·
+                // å¤‰æ›
                 event = eventName.toIMEvent(event);
 
-                // ã‚Å•ÏŠ·‚µ‚«‚ê‚È‚¢‚â‚Â
+                // ä¸Šã§å¤‰æ›ã—ãã‚Œãªã„ã‚„ã¤
                 switch (eventName) {
                 case messageReceived: {
                     String text = (String) event.getArguments()[0];

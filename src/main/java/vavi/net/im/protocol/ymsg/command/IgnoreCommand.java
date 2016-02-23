@@ -16,7 +16,7 @@ import vavi.util.Debug;
 
 
 /**
- * �֎~�ʒm.
+ * 禁止通知.
  * 
  * @event 133
  *

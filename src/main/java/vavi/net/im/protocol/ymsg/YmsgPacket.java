@@ -19,10 +19,10 @@ import vavi.util.Debug;
  * YmsgPacket.
  * <pre>
  * header (20 bytes)
- * data1 ª
- * data2 b
+ * data1 â†‘
+ * data2 ï½œ
  *  :    {@link YmsgPacketHeader#getLength()}
- * dataN «
+ * dataN â†“
  * </pre>
  *
  * @author <a href="mailto:vavivavi@yahoo.co.jp">Naohide Sano</a> (nsano)
@@ -130,12 +130,12 @@ Debug.println("garbage: " + (yp.header.getLength() - l) + " bytes");
         byte[] buffer = new byte[getLength()];
 //Debug.println("packet buffer: " + buffer.length);
 
-        // ƒwƒbƒ_
+        // ãƒ˜ãƒƒãƒ€
         byte[] headerBuffer = header.toByteArray();
         System.arraycopy(headerBuffer, 0, buffer, p, headerBuffer.length);
         p += headerBuffer.length;
 //Debug.println("p: header: " + p);
-        // ƒpƒPƒbƒg–{‘Ì
+        // ãƒ‘ã‚±ãƒƒãƒˆæœ¬ä½“
         for (int i = 0; i < dataList.size(); i++) {
             YmsgData yd = dataList.get(i);
 //Debug.println("p: data(" + i + "): " + p + ", " + yd.getLength() + "/" + buffer.length);

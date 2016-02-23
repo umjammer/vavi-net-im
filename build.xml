@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="Shift_JIS"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <!-- ////////////////////////////////////////////////////////////////////// -->
 <!-- Copyright (c) 2004 by Naohide Sano, All rights reserved.               -->
@@ -15,27 +15,33 @@
 <project name="vavi-net-im" default="compile" basedir="."
          xmlns:ivy="antlib:org.apache.ivy.ant">
 
-  <!-- �v���p�e�B�̒�` -->
+  <!-- プロパティの定義 -->
   <property file="local.properties" />
   <property name="dir.build" value="target/classes" />
 
-  <!-- �N���X�p�X�̒�` -->
+  <!-- クラスパスの定義 -->
   <path id="project.class.path">
-    <pathelement location="${dir.build}" />
     <fileset dir="lib">
       <include name="*.jar" />
     </fileset>
   </path>
 
-  <!-- �^�[�Q�b�g�̒�` -->
+  <!-- ターゲットの定義 -->
 
   <!-- clean -->
-  <target name="clean" description="�r���h���̃N���A">
-    <delete dir="${dir.build}" />
+  <target name="clean" description="ビルド環境のクリア">
+    <delete>
+      <fileset dir="${dir.build}">
+        <include name="**/*" />
+      </fileset>
+      <fileset dir="target/test-classes">
+        <include name="**/*" />
+      </fileset>
+    </delete>
   </target>
 
   <!-- prepare -->
-  <target name="prepare" description="�r���h���̏���">
+  <target name="prepare" description="ビルド環境の準備">
     <mkdir dir="${dir.build}" />
     <ivy:settings file="ivy-settings.xml" />
     <ivy:convertpom pomFile="pom.xml" ivyFile="ivy.xml" />
@@ -43,7 +49,7 @@
   </target>
 
   <!-- javac -->
-  <target name="compile" depends="prepare" description="�R���p�C��">
+  <target name="compile" depends="prepare" description="コンパイル">
     <javac debug="on" deprecation="on" encoding="MS932">
       <classpath refid="project.class.path" />
       <include name="**/*.java" />
@@ -67,7 +73,10 @@
   <!-- run -->
   <target name="run" depends="compile" description="test YmsgProtocol">
     <java classname="vavi.net.im.protocol.ymsg.YmsgProtocol" fork="yes">
-      <classpath refid="project.class.path" />
+      <classpath>
+        <pathelement location="${dir.build}"/>
+        <path refid="project.class.path"/>
+      </classpath>
       <arg value="${ymsg.username}" />
       <arg value="${ymsg.password}" />
     </java>
@@ -76,7 +85,10 @@
   <!-- t1 -->
   <target name="t1" depends="compile" description="test ChallengeResponseV9">
     <java classname="vavi.net.im.protocol.ymsg.auth.ChallengeResponseV9" fork="yes">
-      <classpath refid="project.class.path" />
+      <classpath>
+        <pathelement location="${dir.build}"/>
+        <path refid="project.class.path"/>
+      </classpath>
     </java>
   </target>
 
@@ -90,7 +102,10 @@
       <jvmarg value="-Dvavi.net.im.protocol=${protocol.class}" />
       <jvmarg value="-Dsecurity.provider.1=vavi.net.im.protocol.ymsg.auth.YmsgMessageDigestProvider" />
 -->
-      <classpath refid="project.class.path" />
+      <classpath>
+        <pathelement location="${dir.build}"/>
+        <path refid="project.class.path"/>
+      </classpath>
       <arg value="${ymsg.username}" />
       <arg value="${ymsg.password}" />
       <arg value="${protocol.class}" />

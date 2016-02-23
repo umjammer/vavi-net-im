@@ -17,18 +17,18 @@ import vavi.util.StringUtil;
 
 
 /**
- * ƒpƒPƒbƒgƒwƒbƒ_‚ğ•\‚·ƒNƒ‰ƒX‚Å‚·B
+ * ãƒ‘ã‚±ãƒƒãƒˆãƒ˜ãƒƒãƒ€ã‚’è¡¨ã™ã‚¯ãƒ©ã‚¹ã§ã™ã€‚
  * 
  * 20 byte
  * 
  * <pre>
- *  00-03	ƒVƒOƒjƒ`ƒƒ      C4     &quot;YMSG&quot;
- *  04		ƒo[ƒWƒ‡ƒ“      C      9
+ *  00-03	ã‚·ã‚°ãƒ‹ãƒãƒ£      C4     &quot;YMSG&quot;
+ *  04		ãƒãƒ¼ã‚¸ãƒ§ãƒ³      C      9
  *  05-07	?               C3     &quot;\0\0\0&quot;
- *  08-09	ƒ{ƒfƒB•”‚Ì’·‚³  n
- *  10-11	ƒCƒxƒ“ƒg”Ô†    n
- *  12-15	ƒtƒ‰ƒO/•Ô‚è’l   N
- *  16-19	Ú‘±ID          N
+ *  08-09	ãƒœãƒ‡ã‚£éƒ¨ã®é•·ã•  n
+ *  10-11	ã‚¤ãƒ™ãƒ³ãƒˆç•ªå·    n
+ *  12-15	ãƒ•ãƒ©ã‚°/è¿”ã‚Šå€¤   N
+ *  16-19	æ¥ç¶šID          N
  * </pre>
  * 
  * @author <a href="mailto:vavivavi@yahoo.co.jp">Naohide Sano</a> (nsano)
@@ -36,7 +36,7 @@ import vavi.util.StringUtil;
  */
 public class YmsgPacketHeader {
 
-    /** ƒpƒPƒbƒgƒwƒbƒ_‚Ì’·‚³ (20 bytes) */
+    /** ãƒ‘ã‚±ãƒƒãƒˆãƒ˜ãƒƒãƒ€ã®é•·ã• (20 bytes) */
     public static final int LENGTH = 4 + 2 + 2 + 2 + 2 + 4 + 4;
 
     /** */

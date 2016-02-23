@@ -38,7 +38,7 @@ final class Buffer {
     /** */
     public static Buffer[] type5list;
 
-    /* TODO ‚à‚¤‚¿‚å‚Á‚ÆƒLƒŒƒC‚É‚·‚é */
+    /* TODO ã‚‚ã†ã¡ã‚‡ã£ã¨ã‚­ãƒ¬ã‚¤ã«ã™ã‚‹ */
     static {
         String[] names = {
             "type3.dat",

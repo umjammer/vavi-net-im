@@ -10,7 +10,7 @@ import vavi.net.im.event.IMEvent.Name;
 
 
 /**
- * Jabber ‚ÌƒCƒxƒ“ƒg Name ‚Å‚·D
+ * Jabber ã®ã‚¤ãƒ™ãƒ³ãƒˆ Name ã§ã™ï¼
  * 
  * @author <a href="mailto:vavivavi@yahoo.co.jp">Naohide Sano</a> (nsano)
  * @version 0.00 030318 nsano initial version <br>

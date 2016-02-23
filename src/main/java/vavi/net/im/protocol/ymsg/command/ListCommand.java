@@ -17,7 +17,7 @@ import vavi.util.Debug;
 
 
 /**
- * ƒŠƒXƒg.
+ * ãƒªã‚¹ãƒˆ.
  *
  * @event 85
  *

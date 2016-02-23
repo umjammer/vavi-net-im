@@ -43,9 +43,9 @@ public class ChallengeResponseWeb implements ChallengeResponse {
     /** */
     private int proxyPort;
 
-    /** 設定ファイル */
+    /** 險ｭ螳壹ヵ繧｡繧､繝ｫ */
     private static Preferences userPrefs = Preferences.userNodeForPackage(ChallengeResponseWeb.class);
-    /** 設定ファイル */
+    /** 險ｭ螳壹ヵ繧｡繧､繝ｫ */
     private static Preferences systemPrefs = Preferences.systemNodeForPackage(ChallengeResponseWeb.class);
 
     /** */

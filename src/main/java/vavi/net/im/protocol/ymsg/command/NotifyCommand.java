@@ -15,7 +15,7 @@ import vavi.net.im.protocol.ymsg.YmsgPacket;
 
 
 /**
- * ƒ^ƒCƒsƒ“ƒO’Ê’m.
+ * ã‚¿ã‚¤ãƒ”ãƒ³ã‚°é€šçŸ¥.
  *
  * @event 75
  *
@@ -59,9 +59,9 @@ public class NotifyCommand extends Command {
             }
         } else if ("GAME".equals(msg)) {
             if (stat == 1) {
-                // ƒQ[ƒ€ŠJnH
+                // ã‚²ãƒ¼ãƒ é–‹å§‹ï¼Ÿ
             } else {
-                // ƒQ[ƒ€I—¹H
+                // ã‚²ãƒ¼ãƒ çµ‚äº†ï¼Ÿ
             }
         }
     }

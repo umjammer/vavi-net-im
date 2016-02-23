@@ -27,7 +27,7 @@ public abstract class Handler {
 
     protected IMSupport listeners;
 
-    /** IMListener ‚ğ’Ç‰Á‚µ‚Ü‚·D */
+    /** IMListener ã‚’è¿½åŠ ã—ã¾ã™ï¼ */
     public void setIMListeners(IMSupport listeners) {
         this.listeners = listeners;
     }

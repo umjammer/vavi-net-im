@@ -121,7 +121,7 @@ Debug.printStackTrace(t);
 if (yp != null) {
  Debug.println("error packet:\n" + StringUtil.getDump(yp.toByteArray()));
 }
-// TODO ƒRƒlƒNƒVƒ‡ƒ“‚ªØ‚ê‚½ê‡ƒ‹[ƒv‚·‚é
+// TODO ã‚³ãƒã‚¯ã‚·ãƒ§ãƒ³ãŒåˆ‡ã‚ŒãŸå ´åˆãƒ«ãƒ¼ãƒ—ã™ã‚‹
                     try {
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {

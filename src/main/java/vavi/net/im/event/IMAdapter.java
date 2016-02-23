@@ -19,8 +19,8 @@ import vavi.net.im.event.IMEvent.Name;
 
 /**
  * IMAdapter. 
- * “DL‚¢ƒCƒxƒ“ƒg‹@\‚ğ‰B•Á‚µ‚Ü‚·B
- * ƒ†[ƒUì¬‚ÌƒŠƒXƒi‚Í‚±‚ÌƒNƒ‰ƒX‚ğŒp³‚µŠeƒƒ\ƒbƒh‚ğÀ‘•‚µ‚Ä‚­‚¾‚³‚¢B
+ * æ³¥è‡­ã„ã‚¤ãƒ™ãƒ³ãƒˆæ©Ÿæ§‹ã‚’éš è”½ã—ã¾ã™ã€‚
+ * ãƒ¦ãƒ¼ã‚¶ä½œæˆã®ãƒªã‚¹ãƒŠã¯ã“ã®ã‚¯ãƒ©ã‚¹ã‚’ç¶™æ‰¿ã—å„ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å®Ÿè£…ã—ã¦ãã ã•ã„ã€‚
  * @author <a href="mailto:vavivavi@yahoo.co.jp">Naohide Sano</a> (nsano)
  * @version 0.00 051106 nsano initial version <br>
  */

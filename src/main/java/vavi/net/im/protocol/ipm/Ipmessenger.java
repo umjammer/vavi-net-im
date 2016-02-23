@@ -178,10 +178,10 @@ public class Ipmessenger implements CommunicationListener {
     /** */
     private static ResourceBundle rb = ResourceBundle.getBundle("vavi.net.im.protocol.ipm.resources");
 
-    /** 設定ファイル */
+    /** 險ｭ螳壹ヵ繧｡繧､繝ｫ */
     private static Preferences userPrefs = Preferences.userNodeForPackage(Ipmessenger.class);
 
-    /** 設定ファイル */
+    /** 險ｭ螳壹ヵ繧｡繧､繝ｫ */
     private static Preferences systemPrefs = Preferences.systemNodeForPackage(Ipmessenger.class);
 
     private boolean state = false;

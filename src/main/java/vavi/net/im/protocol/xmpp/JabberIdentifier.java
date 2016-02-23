@@ -21,31 +21,31 @@ import vavi.util.Debug;
 public class JabberIdentifier {
 
     /**
-     * �m�[�h���ʎq
-     * �Eoptional
-     * �E�N���C�A���g�Ȃǂ̃T�[�r�X���󂯂�G���e�B�e�B
-     * �E256�o�C�g�܂�
-     *   (0x20�ȏ�̃��j�R�[�h�����g�p�B"&':<>@ ����� 0xfffe, 0xffff �͏���)
-     * �E�啶����������ʗL
+     * ノード識別子
+     * ・optional
+     * ・クライアントなどのサービスを受けるエンティティ
+     * ・256バイトまで
+     *   (0x20以上のユニコード文字使用可。"&':<>@ および 0xfffe, 0xffff は除く)
+     * ・大文字小文字区別有
      */
     private String node;
 
     /**
-     * �h���C�����ʎq
-     * �E�K�{
-�@   * �E�l�b�g���[�N�Q�[�g�E�F�C��������"�v���C�}��"�z�X�g�B�T�[�r�X���܂ށB
-     * �E255�����ȉ���case-insensitive 7-bit ASCII (RRC 952, REF 1123)
+     * ドメイン識別子
+     * ・必須
+　   * ・ネットワークゲートウェイもしくは"プライマリ"ホスト。サービスも含む。
+     * ・255文字以下のcase-insensitive 7-bit ASCII (RRC 952, REF 1123)
      */
     private String domain;
 
     /**
-     * ���\�[�X���ʎq
-     * �Eoptional
-     * �E����̃Z�b�V�����A�ڑ�(device, location)�A
-     *   ����m�[�h�ɑ�����I�u�W�F�N�g�ȂǁB
-     * �E�ЂƂ̃m�[�h�ɑ΂��āA�����̃��\�[�X�������Ă悢�B
-     * �E256�o�C�g�܂�(0x20 �ȏ�̃��j�R�[�h�����g�p�B0xfffe, 0xffff �͏���)
-     * �E�啶����������ʗL
+     * リソース識別子
+     * ・optional
+     * ・特定のセッション、接続(device, location)、
+     *   あるノードに属するオブジェクトなど。
+     * ・ひとつのノードに対して、複数のリソースがあってよい。
+     * ・256バイトまで(0x20 以上のユニコード文字使用可。0xfffe, 0xffff は除く)
+     * ・大文字小文字区別有
      */
     private String resource;
 
@@ -138,7 +138,7 @@ Debug.println(this);
         new JabberIdentifier("@jabber.jp/rymbox");
         new JabberIdentifier("nsano@jabber.jp");
         new JabberIdentifier("jabber.jp/");
-        new JabberIdentifier("sano@/JabberWeb");	// TODO �ʂ�
+        new JabberIdentifier("sano@/JabberWeb");	// TODO 通る
     }
 }
 

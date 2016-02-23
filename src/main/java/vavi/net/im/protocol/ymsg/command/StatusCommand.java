@@ -20,7 +20,7 @@ import vavi.util.Debug;
 
 
 /**
- * ステータス通知.
+ * 繧ｹ繝�繝ｼ繧ｿ繧ｹ騾夂衍.
  *
  * @event 1
  * @event 2

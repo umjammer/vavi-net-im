@@ -17,7 +17,7 @@ import vavi.util.Debug;
 
 
 /**
- * メッセージ受信.
+ * 繝｡繝�繧ｻ繝ｼ繧ｸ蜿嶺ｿ｡.
  *
  * @event 6
  * @event 42 game
@@ -73,7 +73,7 @@ Debug.println("unknown packet status: " + status);
         if ((status <= 1) || (status == 5)) {
 
             if (msg != null) {
-                // アプリケーションへ通知
+                // 繧｢繝励Μ繧ｱ繝ｼ繧ｷ繝ｧ繝ｳ縺ｸ騾夂衍
                 listeners.eventHappened(new IMEvent(this, YmsgEventName.messageReceived, msg, from, new Date(tm)));
             } else if (status == 2) {
                 listeners.eventHappened(new IMEvent(this, YmsgEventName.systemMessageReceived, rb.getString("MESSAGE_CANT_SEND")));

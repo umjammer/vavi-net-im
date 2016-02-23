@@ -12,7 +12,7 @@ import vavi.net.im.protocol.ymsg.YmsgPacket;
 
 
 /**
- * ƒtƒ@ƒCƒ‹“]‘—.
+ * ãƒ•ã‚¡ã‚¤ãƒ«è»¢é€.
  *
  * @event 70
  *

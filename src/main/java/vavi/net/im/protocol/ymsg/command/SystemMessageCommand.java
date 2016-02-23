@@ -16,7 +16,7 @@ import vavi.util.Debug;
 
 
 /**
- * メッセージ受信.
+ * 繝｡繝�繧ｻ繝ｼ繧ｸ蜿嶺ｿ｡.
  *
  * @event 20
  *

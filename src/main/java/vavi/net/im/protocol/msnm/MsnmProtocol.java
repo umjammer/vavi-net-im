@@ -102,7 +102,7 @@ public class MsnmProtocol extends Protocol {
         public void contactReceived(Contact contact) {
         }
         public void contactAdded(Contact contact) {
-            // TODO ÅuÇ†Ç»ÇΩÇÉRÉìÉ^ÉNÉgÉäÉXÉgÇ…â¡Ç¶ÇΩÇ¢ÅvÇÃè≥îF
+            // TODO „Äå„ÅÇ„Å™„Åü„Çí„Ç≥„É≥„Çø„ÇØ„Éà„É™„Çπ„Éà„Å´Âä†„Åà„Åü„ÅÑ„Äç„ÅÆÊâøË™ç
         }
         public void contactRemoved(Contact contact) {
         }
@@ -164,11 +164,7 @@ log.warning(String.valueOf(e));
         }
 
         // send the status flag mask down to be processed
-        try {
-            connection.setStatus(nativeStatus);
-        } catch (MSNException e) {
-            throw (IOException) new IOException().initCause(e);
-        }
+        connection.setStatus(nativeStatus);
     }
 
     /** */
@@ -205,11 +201,7 @@ log.warning(String.valueOf(e));
     protected void disconnectInternal() throws IOException {
         if (connection.isConnected()) {
             // tell command handler to disconnect/cleanup
-            try {
-                connection.signOut();
-            } catch (MSNException e) {
-                throw (IOException) new IOException().initCause(e);
-            }
+            connection.signOut();
         }
     }
 
@@ -258,12 +250,8 @@ log.warning(String.valueOf(e));
      */
     protected void addToBuddyListInternal(Buddy buddy) throws IOException {
         String username = buddy.getUsername();
-        Contact contact = new Contact(username, Contact.CONTACTLIST_TYPE);
-        try {
-            connection.addToContactList(contact);
-        } catch (MSNException e) {
-            throw (IOException) new IOException().initCause(e);
-        }
+        Contact contact = new Contact(username);
+        connection.addToContactList(contact);
     }
 
     /**
@@ -273,12 +261,8 @@ log.warning(String.valueOf(e));
      */
     protected void deleteFromBuddyListInternal(Buddy buddy) throws IOException {
         String username = buddy.getUsername();
-        Contact contact = new Contact(username, Contact.CONTACTLIST_TYPE);
-        try {
-            connection.removeFromContactList(contact);
-        } catch (MSNException e) {
-            throw (IOException) new IOException().initCause(e);
-        }
+        Contact contact = new Contact(username);
+        connection.removeFromContactList(contact);
     }
 
     /**
@@ -310,11 +294,7 @@ log.warning(String.valueOf(e));
         String username = session.getParticipants()[0].getUsername();
         String text = message.toString();
 log.info("to: " + username + ", : " + text);
-        try {
-            connection.sendMessage(username, text);
-        } catch (MSNException e) {
-            throw (IOException) new IOException().initCause(e);
-        }
+        connection.sendMessage(username, text);
     }
 
     /** */
@@ -332,12 +312,8 @@ log.info("to: " + username + ", : " + text);
 
     /** */
     protected void changeBuddyAliasInternal(Buddy buddy, String alias) throws IOException {
-        // TODO é©ï™ÇæÇØÅH
-        try {
-            connection.setFriendlyName(alias);
-        } catch (MSNException e) {
-            throw (IOException) new IOException().initCause(e);
-        }
+        // TODO Ëá™ÂàÜ„Å†„ÅëÔºü
+        connection.setFriendlyName(alias);
     }
 
     /** */

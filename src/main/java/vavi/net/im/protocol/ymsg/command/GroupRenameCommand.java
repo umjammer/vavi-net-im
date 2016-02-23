@@ -16,7 +16,7 @@ import vavi.util.Debug;
 
 
 /**
- * グループ名変更.
+ * 繧ｰ繝ｫ繝ｼ繝怜錐螟画峩.
  * 
  * @event 137
  *

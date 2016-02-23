@@ -15,7 +15,7 @@ import vavi.util.Debug;
 
 
 /**
- * ”FØ‚ÌƒŒƒXƒ|ƒ“ƒX‘Î‰.
+ * èªè¨¼ã®ãƒ¬ã‚¹ãƒãƒ³ã‚¹å¯¾å¿œ.
  *
  * @event 87
  * 
@@ -36,7 +36,7 @@ Debug.println("sn: " + sn);
     	int m = yp.getDataValueByKey(13) == null || Integer.parseInt(yp.getDataValueByKey(13)) == 0 ? 0 : 1;
 Debug.println("m: " + m + ", (" + yp.getDataValueByKey(13) + ")");
 
-        // ƒŒƒXƒ|ƒ“ƒX‚·‚é
+        // ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã™ã‚‹
         listeners.eventHappened(new IMEvent(this, YmsgEventName.responseAuth, seed, sn, m));
     }
 }

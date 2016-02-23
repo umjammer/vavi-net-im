@@ -8,18 +8,18 @@ package vavi.net.im.event;
 
 
 /**
- * –ß‚è’l‚ª‚ ‚éê‡‚Ég—p‚·‚é IM ‚ÌƒCƒxƒ“ƒg‚Å‚·D
+ * æˆ»ã‚Šå€¤ãŒã‚ã‚‹å ´åˆã«ä½¿ç”¨ã™ã‚‹ IM ã®ã‚¤ãƒ™ãƒ³ãƒˆã§ã™ï¼
  * 
  * @author <a href="mailto:vavivavi@yahoo.co.jp">Naohide Sano</a> (nsano)
  * @version 0.00 030318 nsano initial version <br>
  */
 public class CallableIMEvent extends IMEvent {
 
-    /** ƒCƒxƒ“ƒg‚Ì–ß‚è’l */
+    /** ã‚¤ãƒ™ãƒ³ãƒˆã®æˆ»ã‚Šå€¤ */
     private Object result;
 
     /**
-     * –ß‚è’l‚ª‚ ‚é IM ‚ÌƒCƒxƒ“ƒg‚ğ\’z‚µ‚Ü‚·B
+     * æˆ»ã‚Šå€¤ãŒã‚ã‚‹ IM ã®ã‚¤ãƒ™ãƒ³ãƒˆã‚’æ§‹ç¯‰ã—ã¾ã™ã€‚
      * 
      * @param source the event source
      * @param name the event name
@@ -29,12 +29,12 @@ public class CallableIMEvent extends IMEvent {
         super(source, name, arguments);
     }
 
-    /** ƒCƒxƒ“ƒg‚Ì–ß‚è’l‚ğİ’è‚µ‚Ü‚·B */
+    /** ã‚¤ãƒ™ãƒ³ãƒˆã®æˆ»ã‚Šå€¤ã‚’è¨­å®šã—ã¾ã™ã€‚ */
     public void setResult(Object result) {
         this.result = result;
     }
 
-    /** ƒCƒxƒ“ƒg‚Ì–ß‚è’l‚ğæ“¾‚µ‚Ü‚·B */
+    /** ã‚¤ãƒ™ãƒ³ãƒˆã®æˆ»ã‚Šå€¤ã‚’å–å¾—ã—ã¾ã™ã€‚ */
     public Object getResult() {
         return result;
     }

@@ -36,7 +36,7 @@ import vavi.util.StringUtil;
  */
 public final class YmsgConnection {
 
-    /** key 66 ‚Ì’l */
+    /** key 66 ã®å€¤ */
     public static final int STATUS_LOG_OFF = -1;
 
     public static final int STATUS_LOGIN_OK = 0;
@@ -69,7 +69,7 @@ public final class YmsgConnection {
     /** protocol version */
     private int version;
 
-    /** İ’èƒtƒ@ƒCƒ‹ */
+    /** è¨­å®šãƒ•ã‚¡ã‚¤ãƒ« */
     private static Preferences systemPrefs = Preferences.systemNodeForPackage(YmsgConnection.class);
 
     /** */
@@ -77,7 +77,7 @@ public final class YmsgConnection {
     /** */
     private static int defaultPort;
 
-    /** ƒƒOƒCƒ“ƒzƒXƒg */
+    /** ãƒ­ã‚°ã‚¤ãƒ³ãƒ›ã‚¹ãƒˆ */
     static {
 //Debug.println(Locale.getDefault().getCountry() + ", " + Locale.JAPANESE.getCountry());
 Debug.println(Locale.getDefault().getDisplayLanguage() + ", " + Locale.JAPANESE.getDisplayLanguage());
@@ -92,7 +92,7 @@ Debug.println("host: " + defaultHost);
 Debug.println("port: " + defaultPort);
     }
 
-    /** –¢“Çƒ[ƒ‹” */
+    /** æœªèª­ãƒ¡ãƒ¼ãƒ«æ•° */
     private int unreadMailCount;
 
     /** */
@@ -106,7 +106,7 @@ Debug.println("port: " + defaultPort);
 
         this.connection = new DirectConnection(defaultHost, defaultPort);
 
-        // ƒƒOƒCƒ“ƒAƒJƒEƒ“ƒg
+        // ãƒ­ã‚°ã‚¤ãƒ³ã‚¢ã‚«ã‚¦ãƒ³ãƒˆ
         int p = username.indexOf('@');
         if (p == -1) {
             this.username = username;
@@ -114,11 +114,11 @@ Debug.println("port: " + defaultPort);
             this.username = username.substring(0, p - 1);
         }
 //Debug.println("username: " + this.username);
-        // ƒpƒXƒ[ƒh
+        // ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰
         this.password = password;
 //Debug.println("password: " + this.password);
 
-        // –¢“Çƒ[ƒ‹”
+        // æœªèª­ãƒ¡ãƒ¼ãƒ«æ•°
         this.unreadMailCount = 0;
         
         // TODO
@@ -128,7 +128,7 @@ Debug.println("port: " + defaultPort);
     	    this.version = YmsgPacketHeader.VERSION_WEB_EN;
     	}
 
-        // óMƒXƒŒƒbƒh‚Ì‹N“®
+        // å—ä¿¡ã‚¹ãƒ¬ãƒƒãƒ‰ã®èµ·å‹•
         this.listeners = listeners;
         listeners.addIMListener(defaultIMListener);
 
@@ -140,7 +140,7 @@ Debug.println("port: " + defaultPort);
     //----
 
     /**
-     * ”FØ—v¿‚ğs‚¢‚Ü‚·B
+     * èªè¨¼è¦è«‹ã‚’è¡Œã„ã¾ã™ã€‚
      * @see vavi.net.im.protocol.Protocol#connect(java.util.Properties)
      */
     public void requestAuth() throws IOException {
@@ -171,7 +171,7 @@ Debug.println("sending:\n" + StringUtil.getDump(yp.toByteArray()));
         connection.write(yp.toByteArray());
     }
 
-    /** ƒ_ƒCƒŒƒNƒgÚ‘±‚Ì”FØ‚ğs‚¢‚Ü‚·B */
+    /** ãƒ€ã‚¤ãƒ¬ã‚¯ãƒˆæ¥ç¶šã®èªè¨¼ã‚’è¡Œã„ã¾ã™ã€‚ */
     private void requestAuthDirect() throws IOException {
         YmsgPacket yp = new YmsgPacket(version, 0, Event.AUTH, 0);
         yp.addData(new YmsgData(1, username));
@@ -179,10 +179,10 @@ Debug.println("sending:\n" + StringUtil.getDump(yp.toByteArray()));
         connection.write(yp.toByteArray());
     }
     
-    /** WEB ‚Å‚Ì”FØƒƒWƒbƒN */
+    /** WEB ã§ã®èªè¨¼ãƒ­ã‚¸ãƒƒã‚¯ */
     private static final ChallengeResponse challengeResponseWeb = new ChallengeResponseWeb();
 
-    /** WEB ‚Å‚Ì”FØ‚ğs‚¢‚Ü‚·B */
+    /** WEB ã§ã®èªè¨¼ã‚’è¡Œã„ã¾ã™ã€‚ */
     private void requestAuthWeb() throws IOException {
         String[] responses = challengeResponseWeb.getResponses(username, password, null);
 
@@ -193,14 +193,14 @@ Debug.println("sending:\n" + StringUtil.getDump(yp.toByteArray()));
         connection.write(yp.toByteArray());
     }
 
-    /** ”FØƒƒWƒbƒN‚Ìƒo[ƒWƒ‡ƒ“ */
+    /** èªè¨¼ãƒ­ã‚¸ãƒƒã‚¯ã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ */
     private static final ChallengeResponse[] challengeResponses = {
         new ChallengeResponseV7(),
         new ChallengeResponseV11()
     };
 
     /**
-     * ”FØ—v¿‚Ì•Ô“š‚É‘Î‚·‚é‰“š‚ğs‚¢‚Ü‚·B
+     * èªè¨¼è¦è«‹ã®è¿”ç­”ã«å¯¾ã™ã‚‹å¿œç­”ã‚’è¡Œã„ã¾ã™ã€‚
      * @param seed
      * @param sn
      * @param type 0: version 9, 1: version 11
@@ -223,9 +223,9 @@ Debug.println("result96: " + responses[1]);
     }
     
     /**
-     * ƒoƒfƒBƒŠƒXƒg‚É’Ç‰Á‚µ‚Ü‚·B
-     * @param buddy ’Ç‰Á‚·‚éƒoƒfƒB
-     * @param group ’Ç‰Á‚·‚éƒOƒ‹[ƒv
+     * ãƒãƒ‡ã‚£ãƒªã‚¹ãƒˆã«è¿½åŠ ã—ã¾ã™ã€‚
+     * @param buddy è¿½åŠ ã™ã‚‹ãƒãƒ‡ã‚£
+     * @param group è¿½åŠ ã™ã‚‹ã‚°ãƒ«ãƒ¼ãƒ—
      * @see vavi.net.im.protocol.Protocol#addToBuddyList(vavi.net.im.Buddy)
      */
     public void addBuddyIntoList(String buddy, String group) throws IOException {
@@ -237,23 +237,23 @@ Debug.println("result96: " + responses[1]);
     }
     
     /**
-     * ƒOƒ‹[ƒv‚ÉƒoƒfƒB‚ğ’Ç‰Á‚µ‚Ü‚·B
-     * @param buddy ’Ç‰Á‚·‚éƒoƒfƒB
-     * @param group ’Ç‰Á‚·‚éƒoƒfƒB‚ªŠ‘®‚·‚éƒOƒ‹[ƒv
+     * ã‚°ãƒ«ãƒ¼ãƒ—ã«ãƒãƒ‡ã‚£ã‚’è¿½åŠ ã—ã¾ã™ã€‚
+     * @param buddy è¿½åŠ ã™ã‚‹ãƒãƒ‡ã‚£
+     * @param group è¿½åŠ ã™ã‚‹ãƒãƒ‡ã‚£ãŒæ‰€å±ã™ã‚‹ã‚°ãƒ«ãƒ¼ãƒ—
      */
     public void addBuddyIntoGroup(String buddy, String group) throws IOException {
         YmsgPacket yp = new YmsgPacket(version, 0, Event.ADDBUDDY, 0);
         yp.addData(new YmsgData(1, username));
         yp.addData(new YmsgData(7, buddy));
         yp.addData(new YmsgData(65, group));
-        yp.addData(new YmsgData(14, " ")); // TODO ignore -> ‚Ìê‡‚Í–³‚µ
+        yp.addData(new YmsgData(14, " ")); // TODO ignore -> ã®å ´åˆã¯ç„¡ã—
         connection.write(yp.toByteArray());
     }
 
     /**
-     * ƒoƒfƒBƒŠƒXƒg‚©‚çíœ‚µ‚Ü‚·B
-     * @param buddy ‘ÎÛƒoƒfƒB
-     * @param group ‘ÎÛƒoƒfƒB‚ª‘®‚·‚éƒOƒ‹[ƒv
+     * ãƒãƒ‡ã‚£ãƒªã‚¹ãƒˆã‹ã‚‰å‰Šé™¤ã—ã¾ã™ã€‚
+     * @param buddy å¯¾è±¡ãƒãƒ‡ã‚£
+     * @param group å¯¾è±¡ãƒãƒ‡ã‚£ãŒå±ã™ã‚‹ã‚°ãƒ«ãƒ¼ãƒ—
      */
     public void removeBuddyFromList(String buddy, String group) throws IOException {
         YmsgPacket yp = new YmsgPacket(version, 0, Event.REMBUDDY, 0);
@@ -264,9 +264,9 @@ Debug.println("result96: " + responses[1]);
     }
 
     /**
-     * ƒoƒfƒBƒŠƒXƒg‚É’Ç‰Á—v¿‚ğ‹p‰º‚µ‚Ü‚·B
-     * @param buddy ‹p‰º‚·‚éƒoƒfƒB
-     * @param message ‹p‰ºƒƒbƒZ[ƒW
+     * ãƒãƒ‡ã‚£ãƒªã‚¹ãƒˆã«è¿½åŠ è¦è«‹ã‚’å´ä¸‹ã—ã¾ã™ã€‚
+     * @param buddy å´ä¸‹ã™ã‚‹ãƒãƒ‡ã‚£
+     * @param message å´ä¸‹ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      * @see vavi.net.im.protocol.ymsg.command.ContactCommand
      */
     public void rejectContact(String buddy, String message) throws IOException {
@@ -278,8 +278,8 @@ Debug.println("result96: " + responses[1]);
     }
 
     /**
-     * ‹Ö~ƒŠƒXƒg‚É’Ç‰Á‚µ‚Ü‚·B
-     * @param buddy ‘ÎÛƒoƒfƒB
+     * ç¦æ­¢ãƒªã‚¹ãƒˆã«è¿½åŠ ã—ã¾ã™ã€‚
+     * @param buddy å¯¾è±¡ãƒãƒ‡ã‚£
      */
     public void ignoreBuddy(String buddy) throws IOException {
         YmsgPacket yp = new YmsgPacket(version, 0, Event.IGNORECONTACT, 0);
@@ -290,8 +290,8 @@ Debug.println("result96: " + responses[1]);
     }
 
     /**
-     * ‹Ö~ƒŠƒXƒg‚©‚çíœ‚µ‚Ü‚·B
-     * @param buddy ‘ÎÛƒoƒfƒB
+     * ç¦æ­¢ãƒªã‚¹ãƒˆã‹ã‚‰å‰Šé™¤ã—ã¾ã™ã€‚
+     * @param buddy å¯¾è±¡ãƒãƒ‡ã‚£
      */
     public void unignoreBuddy(String buddy) throws IOException {
         YmsgPacket yp = new YmsgPacket(version, 0, Event.IGNORECONTACT, 0);
@@ -302,8 +302,8 @@ Debug.println("result96: " + responses[1]);
     }
 
     /**
-     * ƒXƒe[ƒ^ƒX‚ğ•ÏX‚µ‚Ü‚·B
-     * @param status ƒXƒe[ƒ^ƒX
+     * ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚’å¤‰æ›´ã—ã¾ã™ã€‚
+     * @param status ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹
      */
     public void setStatus(Status status) throws IOException {
         YmsgPacket yp;
@@ -317,10 +317,10 @@ Debug.println("result96: " + responses[1]);
     }
 
     /**
-     * ƒOƒ‹[ƒvƒZƒbƒVƒ‡ƒ“‚É’Ç‰Áµ‘Ò‚µ‚Ü‚·B
-     * @param session ƒZƒbƒVƒ‡ƒ“‚Ì–¼‘O
-     * @param buddies µ‘Ò‚·‚éƒoƒfƒB
-     * @param message µ‘ÒƒƒbƒZ[ƒW
+     * ã‚°ãƒ«ãƒ¼ãƒ—ã‚»ãƒƒã‚·ãƒ§ãƒ³ã«è¿½åŠ æ‹›å¾…ã—ã¾ã™ã€‚
+     * @param session ã‚»ãƒƒã‚·ãƒ§ãƒ³ã®åå‰
+     * @param buddies æ‹›å¾…ã™ã‚‹ãƒãƒ‡ã‚£
+     * @param message æ‹›å¾…ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public void inviteMoreBuddiesToGroupSession(String session, String[] buddies, String message) throws IOException {
         YmsgPacket yp = new YmsgPacket(version, 0, Event.CONFADDINVITE, 0);
@@ -337,10 +337,10 @@ Debug.println("result96: " + responses[1]);
     }
 
     /**
-     * ƒOƒ‹[ƒvƒZƒbƒVƒ‡ƒ“‚Éµ‘Ò‚µ‚Ü‚·B
-     * @param session ƒZƒbƒVƒ‡ƒ“‚Ì–¼‘O
-     * @param buddies µ‘Ò‚·‚éƒoƒfƒB
-     * @param message µ‘ÒƒƒbƒZ[ƒW
+     * ã‚°ãƒ«ãƒ¼ãƒ—ã‚»ãƒƒã‚·ãƒ§ãƒ³ã«æ‹›å¾…ã—ã¾ã™ã€‚
+     * @param session ã‚»ãƒƒã‚·ãƒ§ãƒ³ã®åå‰
+     * @param buddies æ‹›å¾…ã™ã‚‹ãƒãƒ‡ã‚£
+     * @param message æ‹›å¾…ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      */
     public void inviteBuddiesToGroupSession(String session, String[] buddies, String message) throws IOException {
         YmsgPacket yp = new YmsgPacket(version, 0, Event.CONFINVITE, 0);
@@ -356,9 +356,9 @@ Debug.println("result96: " + responses[1]);
     }
 
     /**
-     * ƒOƒ‹[ƒvƒZƒbƒVƒ‡ƒ“‚ğI—¹‚µ‚Ü‚·B
-     * @param session ƒZƒbƒVƒ‡ƒ“‚Ì–¼‘O
-     * @param buddies ƒZƒbƒVƒ‡ƒ“‚ÉQ‰Á’†‚ÌƒoƒfƒB
+     * ã‚°ãƒ«ãƒ¼ãƒ—ã‚»ãƒƒã‚·ãƒ§ãƒ³ã‚’çµ‚äº†ã—ã¾ã™ã€‚
+     * @param session ã‚»ãƒƒã‚·ãƒ§ãƒ³ã®åå‰
+     * @param buddies ã‚»ãƒƒã‚·ãƒ§ãƒ³ã«å‚åŠ ä¸­ã®ãƒãƒ‡ã‚£
      */
     public void closeGroupSession(String session, String[] buddies) throws IOException {
         YmsgPacket yp = new YmsgPacket(version, 0, Event.CONFLOGOFF, 0);
@@ -371,7 +371,7 @@ Debug.println("result96: " + responses[1]);
     }
 
     /**
-     * ƒOƒ‹[ƒv–¼‚ğ•ÏX‚µ‚Ü‚·B 
+     * ã‚°ãƒ«ãƒ¼ãƒ—åã‚’å¤‰æ›´ã—ã¾ã™ã€‚ 
      */
     public void changeGroupName(String oldGroupName, String newGroupName) throws IOException {
         YmsgPacket yp = new YmsgPacket(version, 0, Event.GROUPRENAME, 0);
@@ -382,10 +382,10 @@ Debug.println("result96: " + responses[1]);
     }
 
     /**
-     * ƒOƒ‹[ƒvƒZƒbƒVƒ‡ƒ“‚ÉƒƒbƒZ[ƒW‚ğ‘—‚è‚Ü‚·B
-     * @param message ƒƒbƒZ[ƒW
-     * @param session ƒZƒbƒVƒ‡ƒ“‚Ì–¼‘O
-     * @param buddies ƒZƒbƒVƒ‡ƒ“‚ÉQ‰Á’†‚ÌƒoƒfƒB
+     * ã‚°ãƒ«ãƒ¼ãƒ—ã‚»ãƒƒã‚·ãƒ§ãƒ³ã«ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é€ã‚Šã¾ã™ã€‚
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+     * @param session ã‚»ãƒƒã‚·ãƒ§ãƒ³ã®åå‰
+     * @param buddies ã‚»ãƒƒã‚·ãƒ§ãƒ³ã«å‚åŠ ä¸­ã®ãƒãƒ‡ã‚£
      */
     public void sendMessageToGroupSession(String message, String session, String[] buddies) throws IOException {
         YmsgPacket yp = new YmsgPacket(version, 0, Event.CONFMSG, 0);
@@ -399,9 +399,9 @@ Debug.println("result96: " + responses[1]);
     }
 
     /** 
-     * ƒZƒbƒVƒ‡ƒ“‚ÉƒƒbƒZ[ƒW‚ğ‘—‚è‚Ü‚·B 
-     * @param message ƒƒbƒZ[ƒW
-     * @param buddy ‘—‚èæ
+     * ã‚»ãƒƒã‚·ãƒ§ãƒ³ã«ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é€ã‚Šã¾ã™ã€‚ 
+     * @param message ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+     * @param buddy é€ã‚Šå…ˆ
      */
     public void sendMessage(String message, String buddy) throws IOException {
 Debug.println("here 4");
@@ -413,8 +413,8 @@ Debug.println("here 4");
     }
 
     /**
-     * ƒ^ƒCƒsƒ“ƒO‚ğn‚ß‚½–‚ğ’m‚ç‚¹‚Ü‚·B
-     * @param buddy ’m‚ç‚¹‚éƒoƒfƒB
+     * ã‚¿ã‚¤ãƒ”ãƒ³ã‚°ã‚’å§‹ã‚ãŸäº‹ã‚’çŸ¥ã‚‰ã›ã¾ã™ã€‚
+     * @param buddy çŸ¥ã‚‰ã›ã‚‹ãƒãƒ‡ã‚£
      * @see vavi.net.im.protocol.Protocol#startTyping()
      */
     public void beginTyping(String buddy) throws IOException {
@@ -428,8 +428,8 @@ Debug.println("here 4");
     }
 
     /**
-     * ƒ^ƒCƒsƒ“ƒO‚ğI‚¦‚½–‚ğ’m‚ç‚¹‚Ü‚·B
-     * @param buddy ’m‚ç‚¹‚éƒoƒfƒB
+     * ã‚¿ã‚¤ãƒ”ãƒ³ã‚°ã‚’çµ‚ãˆãŸäº‹ã‚’çŸ¥ã‚‰ã›ã¾ã™ã€‚
+     * @param buddy çŸ¥ã‚‰ã›ã‚‹ãƒãƒ‡ã‚£
      * @see vavi.net.im.protocol.Protocol#stopTyping()
      */
     public void endTyping(String buddy) throws IOException {
@@ -443,9 +443,9 @@ Debug.println("here 4");
     }
 
     /**
-     * ƒOƒ‹[ƒvƒZƒbƒVƒ‡ƒ“‚Ö‚ÌQ‰Á—v¿‚ğó‘ø‚µ‚Ü‚·B
-     * @param session ƒZƒbƒVƒ‡ƒ“‚Ì–¼‘O
-     * @param message ‹–‰ÂƒƒbƒZ[ƒW
+     * ã‚°ãƒ«ãƒ¼ãƒ—ã‚»ãƒƒã‚·ãƒ§ãƒ³ã¸ã®å‚åŠ è¦è«‹ã‚’å—è«¾ã—ã¾ã™ã€‚
+     * @param session ã‚»ãƒƒã‚·ãƒ§ãƒ³ã®åå‰
+     * @param message è¨±å¯ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      * @see vavi.net.im.protocol.ymsg.command.ConfCommand
      */
     public void acceptBuddiesToGroupSession(int connectionId, String[] buddies, String session, String message) throws IOException {
@@ -461,9 +461,9 @@ Debug.println("here 4");
     }
 
     /**
-     * ƒOƒ‹[ƒvƒZƒbƒVƒ‡ƒ“‚Ö‚ÌQ‰Á—v¿‚ğ‹‘”Û‚µ‚Ü‚·B
-     * @param session ƒZƒbƒVƒ‡ƒ“‚Ì–¼‘O
-     * @param message ‹p‰ºƒƒbƒZ[ƒW
+     * ã‚°ãƒ«ãƒ¼ãƒ—ã‚»ãƒƒã‚·ãƒ§ãƒ³ã¸ã®å‚åŠ è¦è«‹ã‚’æ‹’å¦ã—ã¾ã™ã€‚
+     * @param session ã‚»ãƒƒã‚·ãƒ§ãƒ³ã®åå‰
+     * @param message å´ä¸‹ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
      * @see vavi.net.im.protocol.ymsg.command.ConfCommand
      */
     public void declineBuddiesToGroupSession(int connectionId, String[] buddies, String session, String message) throws IOException {
@@ -480,7 +480,7 @@ Debug.println("here 4");
 
     //----
 
-    /** •¶š—ñƒŠƒ\[ƒX */
+    /** æ–‡å­—åˆ—ãƒªã‚½ãƒ¼ã‚¹ */
     private static final ResourceBundle rb = ResourceBundle.getBundle("vavi.net.im.protocol.ymsg.resources.ymsg", Locale.getDefault());
 
     /** */

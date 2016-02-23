@@ -447,7 +447,7 @@ Debug.printStackTrace(e);
      * @param message Message to send to the conference
      */
     protected void sendSessionMessageInternal(Session session, Message message) throws IOException {
-        try { // TODO ìKìñ
+        try { // TODO ÈÅ©ÂΩì
             org.jivesoftware.smack.packet.Message smackMessage = new org.jivesoftware.smack.packet.Message();
             smackMessage.setBody(message.toString());
             smackMessage.setType(org.jivesoftware.smack.packet.Message.Type.groupchat);

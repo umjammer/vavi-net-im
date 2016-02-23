@@ -22,12 +22,12 @@ public class IMSupport {
     /** The generic listeners */
     private EventListenerList listenerList = new EventListenerList();
 
-    /** IMListener ‚ğ’Ç‰Á‚µ‚Ü‚·D */
+    /** IMListener ã‚’è¿½åŠ ã—ã¾ã™ï¼ */
     public void addIMListener(IMListener l) {
         listenerList.add(IMListener.class, l);
     }
 
-    /** IMListener ‚ğíœ‚µ‚Ü‚·D */
+    /** IMListener ã‚’å‰Šé™¤ã—ã¾ã™ï¼ */
     public void removeIMListener(IMListener l) {
         listenerList.remove(IMListener.class, l);
     }

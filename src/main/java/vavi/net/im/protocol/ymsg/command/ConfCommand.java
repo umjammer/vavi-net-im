@@ -23,7 +23,7 @@ import vavi.util.StringUtil;
 
 
 /**
- * カンファレンス.
+ * 繧ｫ繝ｳ繝輔ぃ繝ｬ繝ｳ繧ｹ.
  *
  * @event 24
  * @event 28
@@ -116,9 +116,9 @@ Debug.println("key: " + yd.getKey() + ": " + yd.getValue());
             CallableIMEvent imEvent = new CallableIMEvent(this, IMEventName.doConfirmation, dialogMessage);
             listeners.eventHappened(imEvent);
             if ((Boolean) imEvent.getResult()) {
-                // Ymsg 側の処置
+                // Ymsg 蛛ｴ縺ｮ蜃ｦ鄂ｮ
                 listeners.eventHappened(new IMEvent(this, YmsgEventName.acceptBuddiesToGroupSession, connectionId, buddies, room, msg));
-                // client 側の処置
+                // client 蛛ｴ縺ｮ蜃ｦ鄂ｮ
                 for (String buddyName : buddies) {
                     if (buddyName.equals(id)) {
                         continue;
@@ -141,7 +141,7 @@ Debug.println("key: " + yd.getKey() + ": " + yd.getValue());
             break;
         case CONFMSG:
             if (who != null) {
-                // 受信
+                // 蜿嶺ｿ｡
                 listeners.eventHappened(new IMEvent(this, YmsgEventName.confMessageReceived, who, room, msg));
             }
             break;

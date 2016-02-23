@@ -14,7 +14,7 @@ import vavi.net.im.protocol.ymsg.YmsgPacket;
 
 
 /**
- * ”FØ‚ÌƒŒƒXƒ|ƒ“ƒX‘Î‰. (for version 11)
+ * èªè¨¼ã®ãƒ¬ã‚¹ãƒãƒ³ã‚¹å¯¾å¿œ. (for version 11)
  *
  * @event 76
  * 
@@ -28,7 +28,7 @@ public class VerifyCommand extends Command {
     /** */
     public void exec(YmsgPacket yp) throws IOException {
         
-        // ƒŒƒXƒ|ƒ“ƒX‚·‚é
+        // ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã™ã‚‹
         listeners.eventHappened(new IMEvent(this, YmsgEventName.requestAuthDirect));
     }
 }
