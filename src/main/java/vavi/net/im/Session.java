@@ -40,7 +40,7 @@ public class Session implements Serializable {
     /**
      * A list of all participants, including the host.
      */
-    protected List<Buddy> buddies = new ArrayList<Buddy>();
+    protected List<Buddy> buddies = new ArrayList<>();
 
     /** セッションの名前 */
     private String name;

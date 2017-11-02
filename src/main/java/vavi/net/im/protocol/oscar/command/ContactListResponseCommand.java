@@ -39,7 +39,7 @@ public class ContactListResponseCommand extends Command {
         ssiCount = ByteUtils.getUShort(data, 1);
 
         if (ssiCount > 0) {
-            ssiList = new ArrayList<SSIItem>(ssiCount);
+            ssiList = new ArrayList<>(ssiCount);
         }
 
         // position of SSI Item data
@@ -65,8 +65,8 @@ public class ContactListResponseCommand extends Command {
      * @return Map of group name to a list of buddys
      */
     public Map<String,List<String>> getGroups() {
-        Map<String,List<String>> groupMap = new HashMap<String,List<String>>();
-        Map<Integer,String> groupNameMap = new HashMap<Integer,String>();
+        Map<String,List<String>> groupMap = new HashMap<>();
+        Map<Integer,String> groupNameMap = new HashMap<>();
 
         if ((ssiList != null) && !ssiList.isEmpty()) {
             for (Iterator<SSIItem> iter = ssiList.iterator(); iter.hasNext();) {

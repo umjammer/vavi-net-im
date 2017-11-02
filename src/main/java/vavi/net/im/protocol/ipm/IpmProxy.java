@@ -48,9 +48,9 @@ public class IpmProxy implements CommunicationListener {
 
     private DataOutputStream dos;
 
-    private Map<DataOutputStream, DataOutputStream> doss = new HashMap<DataOutputStream, DataOutputStream>();
+    private Map<DataOutputStream, DataOutputStream> doss = new HashMap<>();
 
-    private Map<Integer, DatagramSocket> sockets = new HashMap<Integer, DatagramSocket>();
+    private Map<Integer, DatagramSocket> sockets = new HashMap<>();
 
     private BidiMap IPtoPORT = new TreeBidiMap();
 
@@ -212,6 +212,7 @@ public class IpmProxy implements CommunicationListener {
             return;
         }
 
+        @SuppressWarnings("resource")
         Socket sock = new Socket(proxyAddress, PROXY_PORT, localAddress, PROXY_PORT);
         dos = new DataOutputStream(sock.getOutputStream());
 

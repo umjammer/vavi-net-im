@@ -36,7 +36,7 @@ public class OscarEventHandler {
     private OscarConnection connection;
 
     /** */
-    private Map<Integer, Handler> handlers = new HashMap<Integer, Handler>();
+    private Map<Integer, Handler> handlers = new HashMap<>();
 
     /** */
     public OscarEventHandler(OscarConnection connection) {
@@ -57,7 +57,7 @@ public class OscarEventHandler {
                 handlers.put(eventNumber, handler);
             }
         } catch (Exception e) {
-            throw (RuntimeException) new IllegalStateException().initCause(e);
+            throw new IllegalStateException(e);
         }
     }
 

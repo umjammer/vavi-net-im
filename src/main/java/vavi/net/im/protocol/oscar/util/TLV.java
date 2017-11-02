@@ -179,7 +179,7 @@ public class TLV {
         List<TLV> list = null;
 
         if (byteArray != null) {
-            list = new LinkedList<TLV>();
+            list = new LinkedList<>();
 
             int length = len - pos;
 

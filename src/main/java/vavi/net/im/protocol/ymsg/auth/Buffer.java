@@ -51,8 +51,8 @@ final class Buffer {
 //Debug.println("data: " + name);
                 InputStream is = Buffer.class.getResourceAsStream("/vavi/net/im/protocol/ymsg/auth/" + name);
                 Scanner scanner = new Scanner(is);
-                int l = 0;
-                List<Buffer> tmpBuffer = new ArrayList<Buffer>();
+//                int l = 0;
+                List<Buffer> tmpBuffer = new ArrayList<>();
                 while (scanner.hasNextLine()) {
                     String line = scanner.nextLine();
 //System.err.println("line: " + line);
@@ -65,10 +65,11 @@ final class Buffer {
                     } else {
                         assert false : "no start";
                     }
-                    List<Integer> tmpBuf = new ArrayList<Integer>();
+                    List<Integer> tmpBuf = new ArrayList<>();
                     while (scanner2.hasNextInt(16)) {
                         tmpBuf.add(scanner2.nextInt(16));
                     }
+                    scanner2.close();
                     byte[] buf = new byte[tmpBuf.size()];
                     int c = 0;
                     for (int i : tmpBuf) {
@@ -79,8 +80,9 @@ final class Buffer {
                     Buffer buffer = new Buffer(start, buf);
                     tmpBuffer.add(buffer); 
 //System.err.println();
-                    l++;
+//                    l++;
                 }
+                scanner.close();
                 switch (n) {
                 case 0:
 //System.err.println("type 3: " + tmpBuffer.size());

@@ -23,7 +23,7 @@ import vavi.net.im.protocol.ipm.event.CommunicationListener;
  */
 public class NormalSender extends Sender {
     /** */
-    private Map<CommunicationListener, CommunicationListener> listeners = new HashMap<CommunicationListener, CommunicationListener>();
+    private Map<CommunicationListener, CommunicationListener> listeners = new HashMap<>();
 
     /** */
     private static final int wait = 3000;

@@ -52,7 +52,7 @@ public class ConfCommand extends Command {
         String who = null;
         String room = null;
         String id = null;
-        List<String> members = new ArrayList<String>();
+        List<String> members = new ArrayList<>();
 
         for (YmsgData yd : yp.getDataList()) {
 

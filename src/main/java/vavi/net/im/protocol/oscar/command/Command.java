@@ -194,7 +194,7 @@ public abstract class Command {
      */
     protected void addTLV(TLV tlv) {
         if (tlvList == null) {
-            tlvList = new LinkedList<TLV>();
+            tlvList = new LinkedList<>();
         }
 
         tlvList.add(tlv);

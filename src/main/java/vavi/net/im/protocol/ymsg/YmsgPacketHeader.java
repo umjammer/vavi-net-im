@@ -303,7 +303,7 @@ Debug.println(StringUtil.toHex2(s1) + " " + StringUtil.toHex2(s2) + " " + String
             dos.writeInt(status);
             dos.writeInt(connectionId);
         } catch (IOException e) {
-            throw (RuntimeException) new IllegalStateException().initCause(e);
+            throw new IllegalStateException(e);
         }
         return baos.toByteArray();
     }

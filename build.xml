@@ -16,7 +16,9 @@
          xmlns:ivy="antlib:org.apache.ivy.ant">
 
   <!-- プロパティの定義 -->
+  <property environment="env"/>
   <property file="local.properties" />
+
   <property name="dir.build" value="target/classes" />
 
   <!-- クラスパスの定義 -->

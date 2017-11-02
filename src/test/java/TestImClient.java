@@ -46,7 +46,7 @@ Debug.println("className: " + className);
         try {
             this.protocol = (Protocol) Class.forName(className).newInstance();
         } catch (Exception e) {
-            throw (RuntimeException) new IllegalStateException().initCause(e);
+            throw new IllegalStateException(e);
         }
 
         if (username == null || password == null) {

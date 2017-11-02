@@ -124,7 +124,7 @@ public class OscarConnection {
     public OscarConnection(IMSupport listeners) {
         status = Status.DISCONNECTED;
 log.info("status: " + status);
-        writeBuffer = new ArrayList<Command>();
+        writeBuffer = new ArrayList<>();
 
         this.listeners = listeners;
         listeners.addIMListener(defaultIMListener);
@@ -396,7 +396,7 @@ log.info("status: " + status);
      * as the last part of login.
      */
     private void buddyListReceived(Map<String, List<String>> map) throws IOException {
-        List<Buddy> buddyList = new ArrayList<Buddy>();
+        List<Buddy> buddyList = new ArrayList<>();
         if (map != null) {
             for (String groupName : map.keySet()) {
                 Group group = new Group();

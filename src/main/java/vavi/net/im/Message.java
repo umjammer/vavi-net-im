@@ -76,7 +76,7 @@ public class Message implements Serializable {
     /**
      * This vector holds all the mesage components.
      */
-    private List<MessageComponent> components = new ArrayList<MessageComponent>();
+    private List<MessageComponent> components = new ArrayList<>();
     
     /** */
     private Date date = new Date();

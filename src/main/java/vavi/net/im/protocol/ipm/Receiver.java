@@ -30,13 +30,13 @@ public class Receiver implements Runnable {
     private DatagramSocket socket;
 
     /** */
-    private Map<CommunicationListener, CommunicationListener> listeners = new HashMap<CommunicationListener, CommunicationListener>();
+    private Map<CommunicationListener, CommunicationListener> listeners = new HashMap<>();
 
     /** */
     private IpmPacket[] recentPackets = new IpmPacket[MEMORY];
 
     /** */
-    private Map<String, IpmPacket> flags = new HashMap<String, IpmPacket>();
+    private Map<String, IpmPacket> flags = new HashMap<>();
 
     /** */
     public Receiver(DatagramSocket socket) {

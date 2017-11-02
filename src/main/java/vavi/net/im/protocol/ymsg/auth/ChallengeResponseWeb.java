@@ -75,9 +75,9 @@ public class ChallengeResponseWeb implements ChallengeResponse {
             return new String[] { ticket };
 
         } catch (NoSuchAlgorithmException e) {
-            throw (RuntimeException) new IllegalStateException().initCause(e);
+            throw new IllegalStateException(e);
         } catch (IOException e) {
-            throw (RuntimeException) new IllegalStateException().initCause(e);
+            throw new IllegalStateException(e);
         }
     }
 
@@ -162,7 +162,7 @@ public class ChallengeResponseWeb implements ChallengeResponse {
 
     /** */
     private Map<String, String> makeLoginPageDict(String content) {
-        Map<String, String> dict = new HashMap<String, String>();
+        Map<String, String> dict = new HashMap<>();
         int c = 0;
         int d;
 

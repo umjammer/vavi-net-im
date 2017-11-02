@@ -46,7 +46,7 @@ public class Group implements Iterable<Buddy> {
     }
 
     /** */
-    private Map<String, Buddy> buddies = new HashMap<String, Buddy>();
+    private Map<String, Buddy> buddies = new HashMap<>();
     
     /**
      * @param buddy

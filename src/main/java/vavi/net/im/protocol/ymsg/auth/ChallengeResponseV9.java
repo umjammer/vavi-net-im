@@ -25,7 +25,7 @@ public final class ChallengeResponseV9 implements ChallengeResponse {
         try {
             return getResponsesInternal(account, password, seed);
         } catch (NoSuchAlgorithmException e) {
-            throw (RuntimeException) new IllegalStateException().initCause(e);
+            throw new IllegalStateException(e);
         }
     }
 

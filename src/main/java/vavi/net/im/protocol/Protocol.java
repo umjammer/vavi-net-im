@@ -55,7 +55,7 @@ public abstract class Protocol {
     }
 
     /** */
-    protected Map<String, Object> statusMap = new HashMap<String, Object>();
+    protected Map<String, Object> statusMap = new HashMap<>();
 
     /**
      * Change the status message for the user logged in for this protocol. If
@@ -215,7 +215,7 @@ public abstract class Protocol {
     };
 
     /** */
-    protected Map<Feature, Boolean> features = new HashMap<Feature, Boolean>();
+    protected Map<Feature, Boolean> features = new HashMap<>();
 
     /** */
     public boolean getFeature(Feature feature) {
@@ -228,11 +228,11 @@ public abstract class Protocol {
     }
 
     /** <String(Buddy|Session#name), Session> */
-    private Map<Object, Session> sessions = new HashMap<Object, Session>();
+    private Map<Object, Session> sessions = new HashMap<>();
     /** */
     protected Buddy self;
     /** グループ */
-    protected List<Group> groups = new ArrayList<Group>();
+    protected List<Group> groups = new ArrayList<>();
     /** グループ */
     protected Group defaultGroup = new Group("<default>");
     /** 禁止リスト */

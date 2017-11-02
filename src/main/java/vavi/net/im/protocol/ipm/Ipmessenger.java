@@ -194,13 +194,13 @@ public class Ipmessenger implements CommunicationListener {
 
     private String host;
 
-    private Map<String, CommunicationEvent> users = new HashMap<String, CommunicationEvent>();
+    private Map<String, CommunicationEvent> users = new HashMap<>();
 
-    private Map<String, InetSocketAddress> dialupMember = new HashMap<String, InetSocketAddress>();
+    private Map<String, InetSocketAddress> dialupMember = new HashMap<>();
 
-    private Map<IpmListener, IpmListener> listeners = new HashMap<IpmListener, IpmListener>();
+    private Map<IpmListener, IpmListener> listeners = new HashMap<>();
 
-    private Map<Long, NormalSender> recentSents = new HashMap<Long, NormalSender>();
+    private Map<Long, NormalSender> recentSents = new HashMap<>();
 
     private int port;
 
@@ -233,7 +233,7 @@ public class Ipmessenger implements CommunicationListener {
 
     private boolean hasJCE = true;
 
-    private Map<String, CryptoInfo> publicKeys = new HashMap<String, CryptoInfo>();
+    private Map<String, CryptoInfo> publicKeys = new HashMap<>();
 
     private PublicKey publicKey = null;
 
@@ -863,8 +863,8 @@ System.err.println("BroadcastSender: " + sender);
 
     public synchronized void refreshList() {
         InetSocketAddress[] tmpAddress = getBroadcastAddr();
-        users = new HashMap<String, CommunicationEvent>();
-        dialupMember = new HashMap<String, InetSocketAddress>();
+        users = new HashMap<>();
+        dialupMember = new HashMap<>();
 
         String nickname = rb.getString("nickName");
         new BroadcastSender(socket, makePack(Constant.BR_ENTRY.value | getEntryOpt(), nickname, true), tmpAddress);

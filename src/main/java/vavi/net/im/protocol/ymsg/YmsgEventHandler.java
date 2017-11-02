@@ -35,7 +35,7 @@ class YmsgEventHandler {
     private Connection connection;
 
     /** */
-    private Map<Event, Command> commands = new HashMap<Event, Command>();
+    private Map<Event, Command> commands = new HashMap<>();
 
     /** */
     public YmsgEventHandler(Connection connection) {
@@ -56,7 +56,7 @@ class YmsgEventHandler {
                 commands.put(eventNumber, command);
             }
         } catch (Exception e) {
-            throw (RuntimeException) new IllegalStateException().initCause(e);
+            throw new IllegalStateException(e);
         }
     }
 

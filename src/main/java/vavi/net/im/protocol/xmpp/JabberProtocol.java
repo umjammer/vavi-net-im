@@ -407,7 +407,7 @@ Debug.printStackTrace(e);
     }
 
     /** common/native mapping <Session, Chet|GroupChat> */
-    private Map<Session, Object> chats = new HashMap<Session, Object>();
+    private Map<Session, Object> chats = new HashMap<>();
 
     /**
      * Starts a conference

@@ -274,7 +274,7 @@ public class YmsgMessageComponent extends TextComponent {
     //----
     
     /** */
-    private static final Map<Integer, String> colorLookupTable = new HashMap<Integer, String>();
+    private static final Map<Integer, String> colorLookupTable = new HashMap<>();
     
     /** <#rrggbb, escapeSequence> */
     static {

@@ -34,7 +34,7 @@ public class YmsgPacket {
     private YmsgPacketHeader header;
 
     /** <YmsgData> */
-    private List<YmsgData> dataList = new ArrayList<YmsgData>();
+    private List<YmsgData> dataList = new ArrayList<>();
 
     /** 
      * @param version
@@ -105,9 +105,9 @@ public class YmsgPacket {
         while (l < yp.header.getLength()) {
             YmsgData yd = YmsgData.readFrom(is);
             l += yd.getLength();
-            if (yd == null) {
-                continue;
-            }
+//            if (yd == null) {
+//                continue;
+//            }
 //Debug.println("data: " + StringUtil.paramString(yd) + ", " + l + "/" + yp.header.getLength());
             yp.dataList.add(yd);
             if ((yp.header.getLength() - l) < 4) {
