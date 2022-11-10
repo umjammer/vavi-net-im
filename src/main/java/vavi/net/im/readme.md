@@ -1,49 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
-<html lang="ja">
+#
 
-<head>
-<link rev="MADE" href="mailto:vavivavi@yahoo.co.jp" />
-<link rel="INDEX" href="orverview.html" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="Content-Style-Type" content="text/css" />
-<link rel="stylesheet" type="text/css" href="../../vavi.css" />
-<title>vavi.net.im</title>
-<!--
- * Copyright (c) 2004 by Naohide Sano, All Rights Reserved.
- *
- * Written by Naohide Sano
- *
- * @description	Instant Messenger
- * @status 動作確認済み
- *
- * @author	<a href=mailto:vavivavi@yahoo.co.jp>Naohide Sano</a>(nsano)
- *
- * @version	0.00	040220	nsano	initial version
--->
-</head>
-
-<body>
-
-<p>
 Instant Messenger 関連の基本クラス群です。
-</p>
 
-<h3>クラス相関</h3>
+## Class References
 
-<pre>
+```
 
     Group +-- Buddy ←------------- Session --+------------→ Buddy
-          |                                   |
-          +-- Buddy                           +------------→ Buddy
+          |                                  |
+          +-- Buddy                          +------------→ Buddy
 
-</pre>
+```
 
-<h3>設計</h3>
+## Design
 
-
-
-
-<pre>
+```java
     // ---- API ----
 
     Group {
@@ -92,15 +63,8 @@ Instant Messenger 関連の基本クラス群です。
         }
     }
 
-</pre>
+```
 
-<h2>これから実装すること</h2>
+## TODO
 
-<ul>
-  <li>Protocol 別でなく Protocol を意識しない Session ？</li>
-  <li></li>
-</ul>
-
-</body>
-
-</html>
+  * Protocol 別でなく Protocol を意識しない Session ？
