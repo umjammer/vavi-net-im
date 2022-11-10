@@ -6,7 +6,9 @@
 
 package vavi.net.im.protocol.ymsg.auth;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 /**
@@ -15,10 +17,10 @@ import junit.framework.TestCase;
  * @author <a href="mailto:vavivavi@yahoo.co.jp">Naohide Sano</a> (nsano)
  * @version 0.00 061108 nsano initial version <br>
  */
-public class ChallengeResponseV11Test extends TestCase {
+class ChallengeResponseV11Test {
 
-    /** */
-    public void test1() throws Exception {
+    @Test
+    void test1() throws Exception {
         String username = "dehionanosa";
         String password = "12345963";
         String challenge = "f*e/g&l/(y*f^t-m|(5^y|c-1&q*v%h*5%e/d*b|n/4^m/3&v%4&1&(e^3)*b%l*1%d))";
