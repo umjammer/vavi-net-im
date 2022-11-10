@@ -8,6 +8,8 @@
 
   <groupId>vavi</groupId>
   <artifactId>vavi-net-im</artifactId>
+  <version>1.0.1</version>
+
   <name>Vavi Instant Messenger API</name>
   <organization>
     <name>vavi</name>
@@ -39,18 +41,18 @@
           </execution>
         </executions>
       </plugin>
-        <plugin>
+      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.0.0-M7</version>
-          <configuration>
+        <configuration>
           <argLine>
             -Djava.util.logging.config.file=${project.build.testOutputDirectory}/logging.properties
           </argLine>
           <trimStackTrace>false</trimStackTrace>
-          </configuration>
-        </plugin>
-      </plugins>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
 
   <repositories>
@@ -61,14 +63,14 @@
   </repositories>
 
   <dependencyManagement>
-  <dependencies>
-  	<dependency>
+    <dependencies>
+      <dependency>
         <groupId>org.junit</groupId>
         <artifactId>junit-bom</artifactId>
         <version>5.9.0</version>
         <type>pom</type>
         <scope>import</scope>
-  	</dependency>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 
