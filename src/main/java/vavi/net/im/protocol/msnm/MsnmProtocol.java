@@ -191,7 +191,7 @@ log.warning(String.valueOf(e));
             listeners.eventHappened(new IMEvent(this, IMEventName.connected));
 
         } catch (MSNException e) {
-            throw (IOException) new IOException().initCause(e);
+            throw (IOException) new IOException(e);
         }
     }
 

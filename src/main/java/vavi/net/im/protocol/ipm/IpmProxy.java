@@ -174,7 +174,7 @@ public class IpmProxy implements CommunicationListener {
             while (true) {
                 /* 49154 - 65534 */
                 port = (int) ((random.nextLong() % 8192) + 57342);
-                if (IPtoPORT.containsKey(new Integer(port))) {
+                if (IPtoPORT.containsKey(port)) {
                     continue;
                 }
                 try {
@@ -184,8 +184,8 @@ public class IpmProxy implements CommunicationListener {
                 }
                 break;
             }
-            IPtoPORT.put(new Integer(port), event.getFromAddress().toString());
-            sockets.put(new Integer(port), socket);
+            IPtoPORT.put(port, event.getFromAddress().toString());
+            sockets.put(port, socket);
 
             Receiver tmpReceiver = new Receiver(socket);
             tmpReceiver.addIPMComListener(this);
@@ -194,8 +194,8 @@ public class IpmProxy implements CommunicationListener {
         try {
             if (event.getToAddress().getAddress().equals(InetAddress.getByName("255.255.255.255")) && broadcastAll) {
                 InetSocketAddress[] addresses = ipmsg.getBroadcastAddr();
-                for (int i = 0; i < addresses.length; i++) {
-                    DatagramPacket packet = new DatagramPacket(event.getPacket().getBytes(), event.getPacket().getBytes().length, addresses[i].getAddress(), addresses[i].getPort());
+                for (InetSocketAddress address : addresses) {
+                    DatagramPacket packet = new DatagramPacket(event.getPacket().getBytes(), event.getPacket().getBytes().length, address.getAddress(), address.getPort());
                     socket.send(packet);
                 }
             } else {
@@ -282,12 +282,12 @@ public class IpmProxy implements CommunicationListener {
     }
 
     public void addBroadcastPort(int port) {
-        IPtoPORT.put(new Integer(port), "255.255.255.255:" + port);
+        IPtoPORT.put(port, "255.255.255.255:" + port);
     }
 
     public void receive(CommunicationEvent event) {
         try {
-            if (event.getAddress().getAddress().equals(InetAddress.getLocalHost()) && (IPtoPORT.get(new Integer(event.getAddress().getPort())) != null)) {
+            if (event.getAddress().getAddress().equals(InetAddress.getLocalHost()) && (IPtoPORT.get(event.getAddress().getPort()) != null)) {
                 return;
             }
         } catch (UnknownHostException e) {
@@ -297,7 +297,7 @@ public class IpmProxy implements CommunicationListener {
         }
 
         ByteBuffer bb = ByteBuffer.allocate(1024);
-        String prefix = event.getAddress().toString() + ":" + (String) IPtoPORT.get(new Integer(event.getLocalPort())) + ":";
+        String prefix = event.getAddress().toString() + ":" + IPtoPORT.get(event.getLocalPort()) + ":";
         bb.put(prefix.getBytes());
         bb.put(event.getPacket().getBytes());
         bb.put(new byte[] {

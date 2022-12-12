@@ -106,7 +106,7 @@ Debug.println("key: " + yd.getKey() + ": " + yd.getValue());
 
         int connectionId = yp.getHeader().getConnectionId();
         Event event = yp.getHeader().getEvent();
-        String[] buddies = members.toArray(new String[members.size()]);
+        String[] buddies = members.toArray(new String[0]);
         
         // invite, decline, join, left, message . status == 1
         switch (event) {

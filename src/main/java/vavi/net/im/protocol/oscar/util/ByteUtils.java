@@ -23,6 +23,7 @@ package vavi.net.im.protocol.oscar.util;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.io.Writer;
+import java.nio.charset.StandardCharsets;
 
 
 /**
@@ -104,11 +105,7 @@ public class ByteUtils {
      * @return ascii byte array for the string provided
      */
     public static byte[] getBytes(String str) {
-        try {
-            return str.getBytes("US-ASCII");
-        } catch (UnsupportedEncodingException impossible) {
-            return null;
-        }
+        return str.getBytes(StandardCharsets.US_ASCII);
     }
 
     /**
@@ -119,10 +116,7 @@ public class ByteUtils {
     public static byte[] roast(String password) {
         byte[] pword = null;
 
-        try {
-            pword = password.getBytes("US-ASCII");
-        } catch (UnsupportedEncodingException e) {
-        }
+        pword = password.getBytes(StandardCharsets.US_ASCII);
 
         byte[] roasted = new byte[pword.length];
 
@@ -152,8 +146,8 @@ public class ByteUtils {
                         writer.write("0");
                         writer.write(hexChar);
                     } else {
-                        writer.write(hexChar.substring(hexChar.length() - 2,
-                                                       hexChar.length()));
+                        writer.write(hexChar.substring(hexChar.length() - 2
+                        ));
                     }
 
                     writer.write(" ");
@@ -181,8 +175,8 @@ public class ByteUtils {
                     System.out.print("0");
                     System.out.print(hexChar);
                 } else {
-                    System.out.print(hexChar.substring(hexChar.length() - 2,
-                                                       hexChar.length()));
+                    System.out.print(hexChar.substring(hexChar.length() - 2
+                    ));
                 }
 
                 System.out.print(" ");
@@ -212,7 +206,7 @@ public class ByteUtils {
                     sb.append("0");
                     sb.append(str);
                 } else {
-                    sb.append(str.substring(str.length() - 2, str.length()));
+                    sb.append(str.substring(str.length() - 2));
                 }
 
                 sb.append(" ");

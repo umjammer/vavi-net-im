@@ -92,7 +92,7 @@ log.warning("command: " + command);
                         continue;
                     }
 log.info("status: " + connection.getStatus());
-log.info("incoming event <--- " + command.toString());
+log.info("incoming event <--- " + command);
                     Handler handler = handlers.get(connection.getStatus().ordinal());
                     handler.exec(command);
                 } catch (Exception e) {

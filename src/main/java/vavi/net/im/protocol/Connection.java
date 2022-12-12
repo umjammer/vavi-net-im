@@ -33,7 +33,7 @@ public interface Connection {
      * @return the number of bytes that can be read from this connection without blocking.
      * @throws IOException if an I/O error occurs.
      */
-    public int available() throws IOException;
+    int available() throws IOException;
 
     /**
      * Reads the next byte of data from the input stream. The value byte is returned as an
@@ -44,7 +44,7 @@ public interface Connection {
      * @return the next byte of data, or -1 if the end of the stream is reached.
      * @throws IOException if an I/O error occurs.
      */
-    public int read() throws IOException;
+    int read() throws IOException;
 
     /**
      * Reads some number of bytes from the connection and stores them into
@@ -58,7 +58,7 @@ public interface Connection {
      *                      is no more data because the end of the stream has been reached.
      * @throws IOException  If an I/O error occurs.
      */
-    public int read(byte[] b) throws IOException;
+    int read(byte[] b) throws IOException;
 
     /**
      * Reads up to len bytes of data from the connection into an array of bytes.
@@ -75,7 +75,7 @@ public interface Connection {
      *                      is no more data because the end of the stream has been reached.
      * @throws IOException  If an I/O error occurs.
      */
-    public int read(byte[] b, int off, int len) throws IOException;
+    int read(byte[] b, int off, int len) throws IOException;
 
     /**
      * Writes b.length bytes from the specified byte array to this connection.
@@ -83,7 +83,7 @@ public interface Connection {
      * @param b The data to be sent through this connection.
      * @throws IOException If an I/O error occurs.
      */
-    public void write(byte[] b) throws IOException;
+    void write(byte[] b) throws IOException;
 
     /**
      * Flushes this connection and forces any buffered output bytes to be
@@ -94,14 +94,14 @@ public interface Connection {
      *
      * @throws IOException If an I/O error occurs.
      */
-    public void flush() throws IOException;
+    void flush() throws IOException;
 
     /**
      * Closes this connection and releases any resources associated with it.
      *
      * @throws IOException If an I/O error occurs.
      */
-    public void close() throws IOException;
+    void close() throws IOException;
 
     /**
      * Returns an InputStream that can be used to indirectly call the
@@ -109,7 +109,7 @@ public interface Connection {
      *
      * @return An InputStream for reading from this connection.
      */
-    public InputStream getInputStream();
+    InputStream getInputStream();
 
     /**
      * Returns an OutputStream that can be used to indirectly call the
@@ -117,7 +117,7 @@ public interface Connection {
      *
      * @return An OutputStream for writing to this connection.
      */
-    public OutputStream getOutputStream();
+    OutputStream getOutputStream();
 }
 
 /* */

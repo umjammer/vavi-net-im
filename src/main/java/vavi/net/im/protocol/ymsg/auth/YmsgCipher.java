@@ -84,8 +84,8 @@ public final class YmsgCipher extends CipherSpi {
     protected void engineInit(int opmode, Key key, SecureRandom random) throws InvalidKeyException {
         this.opmode = opmode;
 
-        if (YmsgKey.class.isInstance(key)) {
-            this.key = YmsgKey.class.cast(key).key;
+        if (key instanceof YmsgKey) {
+            this.key = ((YmsgKey) key).key;
         } else {
             throw new InvalidKeyException();
         }
@@ -129,9 +129,7 @@ public final class YmsgCipher extends CipherSpi {
             } else {
                 assert false : opmode;
             }
-        } catch (NoSuchAlgorithmException e) {
-            assert false : e;
-        } catch (UnsupportedEncodingException e) {
+        } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
             assert false : e;
         }
         return null;
@@ -160,7 +158,7 @@ public final class YmsgCipher extends CipherSpi {
         public String getFormat() {
             return "Ljava.lang.String";
         }
-    };
+    }
 }
 
 /* */

@@ -6,9 +6,7 @@
 
 import org.jivesoftware.smack.Chat;
 import org.jivesoftware.smack.ChatManager;
-import org.jivesoftware.smack.MessageListener;
 import org.jivesoftware.smack.XMPPConnection;
-import org.jivesoftware.smack.packet.Message;
 
 
 /**
@@ -21,19 +19,17 @@ public class Test2 {
 
     /** */
     public static void main(String[] args) throws Exception {
-        String username = "nsano"; // args[0];
-        String password = "12345963"; // args[1];
-        String server = "jabber.jp"; // args[2];
+        String username = args[0];
+        String password = args[1];
+        String server = args[2];
+        String userId = args[3];
 
         XMPPConnection connection = new XMPPConnection(server);
         connection.connect();
         connection.login(username, password, "SomeResource");
         ChatManager chatmanager = connection.getChatManager();
-        Chat chat = chatmanager.createChat("sano-n@jabber.jp", new MessageListener() {
-            public void processMessage(Chat chat, Message message) {
-                System.out.println("Received message: " + message);
-            }
-        });
+        Chat chat = chatmanager.createChat(username + "@" + server,
+                (chat1, message) -> System.out.println("Received message: " + message));
         chat.sendMessage("Hello!");
         connection.disconnect();
     }

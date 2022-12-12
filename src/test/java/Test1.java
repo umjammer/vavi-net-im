@@ -20,9 +20,9 @@ public class Test1 {
 
     /** */
     public static void main(String[] args) throws Exception {
-        String username = "sano-n"; // args[0];
-        String password = "12345963"; // args[1];
-        String server = "jabber.jp"; // args[2];
+        String username = args[0];
+        String password = args[1];
+        String server = args[2];
 
         Protocol protocol = new JabberProtocol();
         Properties props = new Properties();

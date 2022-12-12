@@ -18,7 +18,7 @@ import vavi.net.im.event.IMEvent.Name;
 public enum JabberEventName implements Name {
 
     /** */
-    exception;
+    exception
 }
 
 /* */

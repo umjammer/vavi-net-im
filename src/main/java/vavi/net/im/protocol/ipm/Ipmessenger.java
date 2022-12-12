@@ -149,7 +149,7 @@ public class Ipmessenger implements CommunicationListener {
         /** */
         public static final long OPTMASK = 0xffffff00L;
         /** */
-        private long value;
+        private final long value;
         /** */
         Constant(long value) {
             this.value = value;
@@ -166,7 +166,7 @@ public class Ipmessenger implements CommunicationListener {
             }
             return null;
         }
-    };
+    }
 
     public static final String encoding = "Windows-31J";
 
@@ -212,7 +212,7 @@ public class Ipmessenger implements CommunicationListener {
 
     private int receiveCount = 0;
 
-    private class CryptoInfo {
+    private static class CryptoInfo {
         private long cap = 0L;
 
         private PublicKey publicKey = null;
@@ -284,9 +284,9 @@ public class Ipmessenger implements CommunicationListener {
             break;
         case SENDMSG:
             if ((opt & Constant.SENDCHECKOPT.value) != 0) {
-                Sender.send(socket, makePack(Constant.RECVMSG.value | Constant.AUTORETOPT.value, new Long(packet.getNo()).toString(), false), event.getAddress());
+                Sender.send(socket, makePack(Constant.RECVMSG.value | Constant.AUTORETOPT.value, Long.toString(packet.getNo()), false), event.getAddress());
             }
-            if (new Boolean(rb.getString("absenceState")).booleanValue() && ((opt & Constant.AUTORETOPT.value) == 0)) {
+            if (Boolean.valueOf(rb.getString("absenceState")) && ((opt & Constant.AUTORETOPT.value) == 0)) {
                 String tmpmsg = rb.getString("absenceMsg");
                 if (!tmpmsg.equals("")) {
                     Sender.send(socket, makePack(Constant.SENDMSG.value | Constant.AUTORETOPT.value, tmpmsg, false), event.getAddress());
@@ -395,9 +395,9 @@ public class Ipmessenger implements CommunicationListener {
     }
 
     private static String bytesToString(byte[] b) {
-        StringBuffer strbuf = new StringBuffer();
-        for (int i = 0; i < b.length; i++) {
-            int tmpb = (b[i] < 0) ? (b[i] + 0x100) : b[i];
+        StringBuilder strbuf = new StringBuilder();
+        for (byte value : b) {
+            int tmpb = (value < 0) ? (value + 0x100) : value;
             strbuf.append(Integer.toString((tmpb / 16), 16).toUpperCase());
             strbuf.append(Integer.toString((tmpb % 16), 16).toUpperCase());
         }
@@ -407,7 +407,7 @@ public class Ipmessenger implements CommunicationListener {
     private byte[] stringToBytes(String src) {
         byte[] buf = new byte[src.length() / 2];
         for (int i = 0; i < src.length(); i += 2) {
-            int b = Integer.parseInt(src.substring(i, ((i + 2) > src.length()) ? src.length() : (i + 2)), 16);
+            int b = Integer.parseInt(src.substring(i, Math.min((i + 2), src.length())), 16);
             b = (b > 127) ? (b - 0x100) : b;
             buf[i / 2] = (byte) b;
         }
@@ -525,7 +525,7 @@ public class Ipmessenger implements CommunicationListener {
             return "0";
         }
 
-        StringBuffer result = new StringBuffer();
+        StringBuilder result = new StringBuilder();
         try {
             result.append(Long.toString(getCryptoCaps(), 16).toUpperCase());
             result.append(":");
@@ -600,7 +600,7 @@ public class Ipmessenger implements CommunicationListener {
                 privateKey = kf.generatePrivate(privspec);
             } catch (Exception e) {
                 KeyPairGenerator kpg = KeyPairGenerator.getInstance("RSA");
-                kpg.initialize(1024);
+                kpg.initialize(2048);
 
                 KeyPair kp = kpg.generateKeyPair();
                 publicKey = kp.getPublic();
@@ -646,7 +646,7 @@ public class Ipmessenger implements CommunicationListener {
         } catch (Exception e) {
             proxyAddress = null;
         }
-        proxy = new IpmProxy(this, proxyAddress, new Boolean(rb.getString("proxyBroadcastAll")).booleanValue());
+        proxy = new IpmProxy(this, proxyAddress, Boolean.valueOf(rb.getString("proxyBroadcastAll")));
         for (int i = 0; i < ports.length; i++) {
             proxy.addBroadcastPort(ports[i]);
 
@@ -832,27 +832,27 @@ System.err.println("BroadcastSender: " + sender);
             recentSents.put(packet.getNo(), sender);
             new Thread(sender).start();
         } else {
-            for (int i = 0; i < address.length; i++) {
+            for (InetSocketAddress inetSocketAddress : address) {
                 long tmpFlag = flag;
                 String tmpMessage = message;
-                if (publicKeys.containsKey(address[i].toString())) {
-                    tmpMessage = encryptMessage(publicKeys.get(address[i].toString()), message);
+                if (publicKeys.containsKey(inetSocketAddress.toString())) {
+                    tmpMessage = encryptMessage(publicKeys.get(inetSocketAddress.toString()), message);
                     tmpFlag |= Constant.ENCRYPTOPT.value;
                 }
 
                 IpmPacket packet = makePack(Constant.SENDMSG.value | Constant.MULTICASTOPT.value | tmpFlag, tmpMessage, false);
-                Sender.send(socket, packet, address[i]);
+                Sender.send(socket, packet, inetSocketAddress);
             }
         }
     }
 
     public void sendReadMessage(IpmEvent event) throws IOException {
-        IpmPacket packet = makePack(Constant.READMSG.value | Constant.AUTORETOPT.value, new Long(event.getPacket().getNo()).toString(), false);
+        IpmPacket packet = makePack(Constant.READMSG.value | Constant.AUTORETOPT.value, Long.toString(event.getPacket().getNo()), false);
         Sender.send(socket, packet, event.getAddress());
     }
 
     public void sendDeleteMessage(IpmEvent event) throws IOException {
-        IpmPacket packet = makePack(Constant.DELMSG.value | Constant.AUTORETOPT.value, new Long(event.getPacket().getNo()).toString(), false);
+        IpmPacket packet = makePack(Constant.DELMSG.value | Constant.AUTORETOPT.value, Long.toString(event.getPacket().getNo()), false);
         Sender.send(socket, packet, event.getAddress());
     }
 
@@ -893,11 +893,11 @@ System.err.println("BroadcastSender: " + sender);
         if ((packet.getCommand() & Constant.ABSENCEOPT.value) != 0) {
             tmpUser = tmpUser + "*";
         }
-        sb.append(tmpUser + " (");
+        sb.append(tmpUser).append(" (");
         if (packet.getGroup() != null) {
-            sb.append(packet.getGroup() + "/");
+            sb.append(packet.getGroup()).append("/");
         }
-        sb.append(packet.getHost() + ")");
+        sb.append(packet.getHost()).append(")");
         return sb.toString();
     }
 

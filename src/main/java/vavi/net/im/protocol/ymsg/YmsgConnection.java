@@ -145,13 +145,11 @@ Debug.println("port: " + defaultPort);
      */
     public void requestAuth() throws IOException {
     	if (version == YmsgPacketHeader.VERSION_WEB_EN) {
-            Thread thread = new Thread(new Runnable() {
-                public void run() {
-                    try {
-                        requestAuthWeb();
-                    } catch (IOException e) {
+            Thread thread = new Thread(() -> {
+                try {
+                    requestAuthWeb();
+                } catch (IOException e) {
 e.printStackTrace(System.err);
-                    }
                 }
             });
             thread.start();
@@ -329,9 +327,9 @@ Debug.println("result96: " + responses[1]);
         yp.addData(new YmsgData(57, session)); // room name
         yp.addData(new YmsgData(58, message));
         yp.addData(new YmsgData(13, "0"));
-        for (int i = 0; i < buddies.length; i++) {
-            yp.addData(new YmsgData(52, buddies[i]));
-            yp.addData(new YmsgData(53, buddies[i]));
+        for (String buddy : buddies) {
+            yp.addData(new YmsgData(52, buddy));
+            yp.addData(new YmsgData(53, buddy));
         }
         connection.write(yp.toByteArray());
     }
@@ -349,8 +347,8 @@ Debug.println("result96: " + responses[1]);
         yp.addData(new YmsgData(57, session));
         yp.addData(new YmsgData(58, message));
         yp.addData(new YmsgData(13, "0"));
-        for (int i = 0; i < buddies.length; i++) {
-            yp.addData(new YmsgData(52, buddies[i]));
+        for (String buddy : buddies) {
+            yp.addData(new YmsgData(52, buddy));
         }
         connection.write(yp.toByteArray());
     }
@@ -364,8 +362,8 @@ Debug.println("result96: " + responses[1]);
         YmsgPacket yp = new YmsgPacket(version, 0, Event.CONFLOGOFF, 0);
         yp.addData(new YmsgData(1, username));
         yp.addData(new YmsgData(57, session));
-        for (int i = 0; i < buddies.length; i++) {
-            yp.addData(new YmsgData(3, buddies[i]));
+        for (String buddy : buddies) {
+            yp.addData(new YmsgData(3, buddy));
         }
         connection.write(yp.toByteArray());
     }
@@ -390,8 +388,8 @@ Debug.println("result96: " + responses[1]);
     public void sendMessageToGroupSession(String message, String session, String[] buddies) throws IOException {
         YmsgPacket yp = new YmsgPacket(version, 0, Event.CONFMSG, 0);
         yp.addData(new YmsgData(1, username));
-        for (int i = 0; i < buddies.length; i++) {
-            yp.addData(new YmsgData(53, buddies[i]));
+        for (String buddy : buddies) {
+            yp.addData(new YmsgData(53, buddy));
         }
         yp.addData(new YmsgData(57, session));
         yp.addData(new YmsgData(14, message));
@@ -451,8 +449,7 @@ Debug.println("here 4");
     public void acceptBuddiesToGroupSession(int connectionId, String[] buddies, String session, String message) throws IOException {
         YmsgPacket yp = new YmsgPacket(version, connectionId, Event.CONFLOGON, 0);
         yp.addData(new YmsgData(1, username));
-        for (int i = 0; i < buddies.length; i++) {
-            String buddyName = buddies[i];
+        for (String buddyName : buddies) {
             yp.addData(new YmsgData(3, buddyName));
         }
         yp.addData(new YmsgData(57, session));
@@ -469,8 +466,7 @@ Debug.println("here 4");
     public void declineBuddiesToGroupSession(int connectionId, String[] buddies, String session, String message) throws IOException {
         YmsgPacket yp = new YmsgPacket(version, connectionId, Event.CONFDECLINE, 0);
         yp.addData(new YmsgData(1, username));
-        for (int i = 0; i < buddies.length; i++) {
-            String account = buddies[i];
+        for (String account : buddies) {
             yp.addData(new YmsgData(3, account));
         }
         yp.addData(new YmsgData(57, session));

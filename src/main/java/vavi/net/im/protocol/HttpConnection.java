@@ -14,6 +14,7 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.Arrays;
 
 import org.apache.commons.codec.binary.Base64;
 
@@ -102,7 +103,7 @@ public class HttpConnection implements Connection {
 
         if ((username != null) && (password != null)) {
             wr.print("Proxy-Authorization: Basic " +
-                     new String(Base64.encodeBase64((username + ":" + password).getBytes()) + "\r\n"));
+                    Arrays.toString(Base64.encodeBase64((username + ":" + password).getBytes())) + "\r\n");
         }
 
         wr.print("\r\n");

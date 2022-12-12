@@ -30,9 +30,7 @@ public final class ChallengeResponseV11 implements ChallengeResponse {
 //Debug.println("\naccount: " + account + "\npassword: " + password + "\nseed: " + seed);
         try {
             return getResponsesInternal(account, password, seed);
-        } catch (NoSuchAlgorithmException e) {
-            throw new IllegalStateException(e);
-        } catch (NoSuchProviderException e) {
+        } catch (NoSuchAlgorithmException | NoSuchProviderException e) {
             throw new IllegalStateException(e);
         }
     }
@@ -250,7 +248,7 @@ tableLoop:
         // If y != 0, we need some help.
         if (table != 0) {
             // Update magic stuff.   Call it twice because Yahoo's encryption is super bad ass.
-            long updatedKey = (magicKey[0] & 0xff) | ((magicKey[1] & 0xff) << 8) | ((magicKey[2] & 0xff) << 16) | ((magicKey[3] & 0xff) << 24);
+            long updatedKey = (magicKey[0] & 0xff) | ((magicKey[1] & 0xff) << 8) | ((magicKey[2] & 0xff) << 16) | ((long) (magicKey[3] & 0xff) << 24);
 //System.err.printf("%02x %02x %02x %02x\n", (magicKeyChar[0] & 0xff), ((magicKeyChar[1] & 0xff) << 8), ((magicKeyChar[2] & 0xff) << 16), ((magicKeyChar[3] & 0xff) << 24));
 //System.err.printf("%016x\n", magic4);
 

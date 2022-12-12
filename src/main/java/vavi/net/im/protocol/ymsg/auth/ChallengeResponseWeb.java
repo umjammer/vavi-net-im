@@ -49,7 +49,7 @@ public class ChallengeResponseWeb implements ChallengeResponse {
     private static Preferences systemPrefs = Preferences.systemNodeForPackage(ChallengeResponseWeb.class);
 
     /** */
-    {
+    static {
         System.setProperty("http.proxyHost", userPrefs.get("proxyhost", systemPrefs.get("proxyhost", "")));
         System.setProperty("http.proxyPort", userPrefs.get("proxyport", systemPrefs.get("proxyport", "80")));
     }
@@ -74,9 +74,7 @@ public class ChallengeResponseWeb implements ChallengeResponse {
 
             return new String[] { ticket };
 
-        } catch (NoSuchAlgorithmException e) {
-            throw new IllegalStateException(e);
-        } catch (IOException e) {
+        } catch (NoSuchAlgorithmException | IOException e) {
             throw new IllegalStateException(e);
         }
     }
@@ -118,19 +116,17 @@ public class ChallengeResponseWeb implements ChallengeResponse {
             url.append(StringUtil.toHex2(result[i]));
         }
 
-        Iterator<String> j = dict.keySet().iterator();
-        while (j.hasNext()) {
-            String key = j.next();
+        for (String key : dict.keySet()) {
             String value = dict.get(key);
 
             if (!key.equals("passwd")) {
                 if (key.equals(".save") || key.equals(".js")) {
-                    url.append("&" + key + "=1");
+                    url.append("&").append(key).append("=1");
                 } else if (key.equals(".challenge")) {
-                    url.append("&" + key + "=" + value);
+                    url.append("&").append(key).append("=").append(value);
                 } else {
                     String u = URLEncoder.encode(value, "UTF-8");
-                    url.append("&" +  key + "=" + u);
+                    url.append("&").append(key).append("=").append(u);
                 }
             }
         }

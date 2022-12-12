@@ -81,9 +81,7 @@ public class YmsgPacket {
      * @return null When data does not exists.
      */
     public String getDataValueByKey(int key) {
-        for (int i = 0; i < dataList.size(); i++) {
-            YmsgData yd = dataList.get(i);
-            
+        for (YmsgData yd : dataList) {
             if (yd.getKey() == key) {
                 return yd.getValue();
             }
@@ -136,9 +134,8 @@ Debug.println("garbage: " + (yp.header.getLength() - l) + " bytes");
         p += headerBuffer.length;
 //Debug.println("p: header: " + p);
         // パケット本体
-        for (int i = 0; i < dataList.size(); i++) {
-            YmsgData yd = dataList.get(i);
-//Debug.println("p: data(" + i + "): " + p + ", " + yd.getLength() + "/" + buffer.length);
+        for (YmsgData yd : dataList) {
+            //Debug.println("p: data(" + i + "): " + p + ", " + yd.getLength() + "/" + buffer.length);
             System.arraycopy(yd.toByteArray(), 0, buffer, p, yd.getLength());
             p += yd.getLength();
 //Debug.println("p: data(" + i + "): " + p);

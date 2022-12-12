@@ -9,6 +9,7 @@ package vavi.net.im;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import vavi.net.im.event.IMEvent;
@@ -94,9 +95,7 @@ public class Session implements Serializable {
     public Session(IMSupport listeners, Buddy host, Buddy[] buddies) {
         this.listeners = listeners;
         this.host = host;
-        for (Buddy buddy : buddies) {
-            this.buddies.add(buddy);
-        }
+        this.buddies.addAll(Arrays.asList(buddies));
     }
 
     /**
@@ -112,9 +111,7 @@ public class Session implements Serializable {
     public Session(IMSupport listeners, Buddy host, Buddy[] buddies, String message) throws IOException {
         this.listeners = listeners;
         this.host = host;
-        for (Buddy buddy : buddies) {
-            this.buddies.add(buddy);
-        }
+        this.buddies.addAll(Arrays.asList(buddies));
 
         listeners.eventHappened(new IMEvent(this, IMEventName.addParticipant, this, buddies));
     }
@@ -159,7 +156,7 @@ public class Session implements Serializable {
      * @return all participants for this conference.
      */
     public Buddy[] getParticipants() {
-        return buddies.toArray(new Buddy[buddies.size()]);
+        return buddies.toArray(new Buddy[0]);
     }
 
     /**

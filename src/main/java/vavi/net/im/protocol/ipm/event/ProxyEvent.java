@@ -53,8 +53,8 @@ public class ProxyEvent extends EventObject {
             index++;
         }
         try {
-            fromAddress = new InetSocketAddress(InetAddress.getByName(new String(buf, begin, indexes[0] - begin)), Integer.valueOf(new String(buf, indexes[0] + 1, indexes[1] - indexes[0] - 1)));
-            toAddress = new InetSocketAddress(InetAddress.getByName(new String(buf, indexes[1] + 1, indexes[2] - indexes[1] - 1)), Integer.valueOf(new String(buf, indexes[2] + 1, indexes[3] - indexes[2] - 1)));
+            fromAddress = new InetSocketAddress(InetAddress.getByName(new String(buf, begin, indexes[0] - begin)), Integer.parseInt(new String(buf, indexes[0] + 1, indexes[1] - indexes[0] - 1)));
+            toAddress = new InetSocketAddress(InetAddress.getByName(new String(buf, indexes[1] + 1, indexes[2] - indexes[1] - 1)), Integer.parseInt(new String(buf, indexes[2] + 1, indexes[3] - indexes[2] - 1)));
         } catch (IOException e) {
             e.printStackTrace(System.err);
             return;
