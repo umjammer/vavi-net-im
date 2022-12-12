@@ -6,9 +6,7 @@
 
 import org.jivesoftware.smack.Chat;
 import org.jivesoftware.smack.ChatManager;
-import org.jivesoftware.smack.MessageListener;
 import org.jivesoftware.smack.XMPPConnection;
-import org.jivesoftware.smack.packet.Message;
 
 
 /**

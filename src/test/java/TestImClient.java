@@ -105,13 +105,13 @@ if (args.length > 2) {
         switch (args[0]) {
         case "msg":
             if (args.length >= 3) {
-                String text = new String();
+                StringBuilder text = new StringBuilder(new String());
                 for (int i = 2; i < args.length; i++) {
-                    text += (args[i] + " ");
+                    text.append(args[i]).append(" ");
                 }
 
                 Buddy buddy = new Buddy(args[1]);
-                Message message = new Message(text);
+                Message message = new Message(text.toString());
 
                 Session session = protocol.startSession(buddy);
                 session.sendMessage(message);

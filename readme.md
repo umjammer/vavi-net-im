@@ -9,8 +9,13 @@ Instant Messenger Protocols
 
 ## References
 
- *
+ * [JSR 165: SIMPLE Instant Messaging](https://jcp.org/en/jsr/detail?id=165)
+ * [JSR 187: Instant Messaging](https://jcp.org/en/jsr/detail?id=187)
 
 ## TODO
 
  * bind URLConnection
+ * discord
+   * https://github.com/DV8FromTheWorld/JDA
+   * https://github.com/Javacord/Javacord
+   * https://github.com/Discord4J/Discord4J
