@@ -368,7 +368,7 @@ Debug.printStackTrace(e);
             pingTimer.schedule(pinger, 0, 240000);
     
         } catch (XMPPException e) {
-            throw (IOException) new IOException().initCause(e);
+            throw (IOException) new IOException(e);
         }
     }
 
@@ -454,7 +454,7 @@ Debug.printStackTrace(e);
             MultiUserChat chat = (MultiUserChat) chats.get(session);
             chat.sendMessage(smackMessage);
         } catch (XMPPException e) {
-            throw (IOException) new IOException().initCause(e);
+            throw (IOException) new IOException(e);
         }
     }
 
@@ -473,7 +473,7 @@ Debug.printStackTrace(e);
             Chat chat = (Chat) chats.get(session);
             chat.sendMessage(smackMessage);
         } catch (XMPPException e) {
-            throw (IOException) new IOException().initCause(e);
+            throw (IOException) new IOException(e);
         }
     }
 
@@ -487,7 +487,7 @@ Debug.printStackTrace(e);
             Roster roster = connection.getRoster();
             roster.createEntry(buddy.getUsername(), buddy.getAlias(), null);
         } catch (XMPPException e) {
-            throw (IOException) new IOException().initCause(e);
+            throw (IOException) new IOException(e);
         }
     }
 
@@ -568,7 +568,7 @@ System.err.print("from " + oldGroup.getName());
             newSmackGroup.addEntry(entry);
 System.err.println(" to " + newGroup.getName());
         } catch (XMPPException e) {
-            throw (IOException) new IOException().initCause(e);
+            throw (IOException) new IOException(e);
         }
     }
 }

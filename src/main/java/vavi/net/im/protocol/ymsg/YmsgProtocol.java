@@ -302,7 +302,7 @@ Debug.println("here 3");
 
             backupListeners.eventHappened(event);
         }
-    };
+    }
 
     //----
     

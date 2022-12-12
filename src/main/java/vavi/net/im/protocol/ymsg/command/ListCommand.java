@@ -32,17 +32,17 @@ public class ListCommand extends Command {
 
     /** */
     public void exec(YmsgPacket yp) throws IOException {
-        String buddies = "";
-        String ignores = "";
+        StringBuilder buddies = new StringBuilder();
+        StringBuilder ignores = new StringBuilder();
         
         for (YmsgData yd : yp.getDataList()) {
 
             switch (yd.getKey()) {
             case 87: // regular member
-                buddies += yd.getValue();
+                buddies.append(yd.getValue());
                 break;
             case 88: // ignore member
-                ignores += yd.getValue();
+                ignores.append(yd.getValue());
                 break;
             case 59: // cookie
                 processCookie(yd.getValue());
@@ -55,7 +55,7 @@ Debug.println("key: " + yd.getKey() + ": " + yd.getValue());
 
 //Debug.println("buddies: " + buddies);
         // buddy list
-        StringTokenizer groups = new StringTokenizer(buddies, "\n");
+        StringTokenizer groups = new StringTokenizer(buddies.toString(), "\n");
 
         while (groups.hasMoreTokens()) {
             String p = groups.nextToken();
@@ -78,7 +78,7 @@ Debug.println("buddyName: " + buddyName);
 
 //Debug.println("ignores: " + ignores);
         // ignore list
-        StringTokenizer st = new StringTokenizer(ignores, ",");
+        StringTokenizer st = new StringTokenizer(ignores.toString(), ",");
         while (st.hasMoreTokens()) {
             String buddyName = st.nextToken();
 Debug.println("ignore buddyName: " + buddyName);

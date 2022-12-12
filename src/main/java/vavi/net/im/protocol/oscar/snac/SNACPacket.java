@@ -165,15 +165,14 @@ public class SNACPacket {
      * @return a string representation of the SNACPacket
      */
     public String toString() {
-        StringBuilder sb = new StringBuilder(50);
-        sb.append("SNAC: ");
-        sb.append("familyId=0x").append(Integer.toHexString(familyId)).append(" ");
-        sb.append("subTypeId=0x").append(Integer.toHexString(subTypeId)).append(" ");
-        sb.append("flag1=").append(flag1).append(" ");
-        sb.append("flag2=").append(flag2).append(" ");
-        sb.append("requestId=").append(requestId);
+        String sb = "SNAC: " +
+                "familyId=0x" + Integer.toHexString(familyId) + " " +
+                "subTypeId=0x" + Integer.toHexString(subTypeId) + " " +
+                "flag1=" + flag1 + " " +
+                "flag2=" + flag2 + " " +
+                "requestId=" + requestId;
 
-        return sb.toString();
+        return sb;
     }
 }
 

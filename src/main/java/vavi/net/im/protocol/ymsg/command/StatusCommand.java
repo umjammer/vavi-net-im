@@ -40,7 +40,7 @@ import vavi.util.Debug;
  */
 public class StatusCommand extends Command {
 
-    private class YmsgFriend {
+    private static class YmsgFriend {
         /** */
         public YmsgFriend(String name) {
             this.name = name;

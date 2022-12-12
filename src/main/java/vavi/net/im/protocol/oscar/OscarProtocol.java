@@ -131,7 +131,6 @@ log.warning(String.valueOf(e));
         if (connection.isRunning()) {
             // tell command handler to disconnect/cleanup
             connection.disconnect();
-            connection.finalize();
         }
     }
 

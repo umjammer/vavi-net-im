@@ -253,9 +253,9 @@ public class YmsgMessageComponent extends TextComponent {
                     continue;
                 }
             } else {
-                for (int k = 0; k < tags.length; k++) {
-                    if (text.substring(i).toLowerCase().startsWith(tags[k])) {
-                        i += tags[k].length() - 1;
+                for (String tag : tags) {
+                    if (text.substring(i).toLowerCase().startsWith(tag)) {
+                        i += tag.length() - 1;
                         insideTag = true;
 
                         break;
@@ -289,7 +289,7 @@ public class YmsgMessageComponent extends TextComponent {
         colorLookupTable.put(0x0000ff, (char) 0x1b + "[38m"); // RED
         colorLookupTable.put(0x008080, (char) 0x1b + "[39m"); // OLIVE
         colorLookupTable.put(0x00ffff, (char) 0x1b + "[37m"); // YELLOW
-    };
+    }
 
     /**
      * @param escapeSequence ESC [ ansiColor m, ESC [ # bb gg rr m

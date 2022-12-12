@@ -69,19 +69,18 @@ public class ContactListResponseCommand extends Command {
         Map<Integer,String> groupNameMap = new HashMap<>();
 
         if ((ssiList != null) && !ssiList.isEmpty()) {
-            for (Iterator<SSIItem> iter = ssiList.iterator(); iter.hasNext();) {
-                SSIItem item = iter.next();
+            for (SSIItem item : ssiList) {
                 int groupId = item.getGroupId();
                 int itemType = item.getItemType();
 
                 if (itemType == SSIItem.TYPE_GROUP) {
-                    if (!groupNameMap.containsKey(new Integer(groupId))) {
-                        groupMap.put(item.getItemName(), new LinkedList<String>());
-                        groupNameMap.put(new Integer(groupId),
-                                         item.getItemName());
+                    if (!groupNameMap.containsKey(groupId)) {
+                        groupMap.put(item.getItemName(), new LinkedList<>());
+                        groupNameMap.put(groupId,
+                                item.getItemName());
                     }
                 } else if (itemType == SSIItem.TYPE_BUDDY) {
-                    String name = groupNameMap.get(new Integer(groupId));
+                    String name = groupNameMap.get(groupId);
                     List<String> list = groupMap.get(name);
                     list.add(item.getItemName());
                 }

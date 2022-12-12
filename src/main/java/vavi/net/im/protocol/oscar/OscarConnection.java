@@ -85,7 +85,7 @@ public class OscarConnection {
     private WriterThread writer;
 
     /** This is a buffer for holding all outgoing commands. Access to this buffer must be synchronized. */
-    private List<Command> writeBuffer;
+    private final List<Command> writeBuffer;
 
     /** internal state */
     private Status status;
@@ -131,7 +131,7 @@ log.info("status: " + status);
     }
 
     /** */
-    public void finalize() {
+    protected void finalize() {
         quit = true;
     }
 
@@ -216,19 +216,25 @@ log.info("status: " + status);
         String connection = props.getProperty("connection");
 
         // Create a connection object
-        if (connection.equals("DIRECT")) {
+        switch (connection) {
+        case "DIRECT":
             this.connection = new DirectConnection(host, port);
-        } else if (connection.equals("SOCKS4")) {
+            break;
+        case "SOCKS4": {
             String proxyHost = props.getProperty("ServerName");
             int proxyPort = Integer.parseInt(props.getProperty("ServerPort"));
             this.connection = new SocksConnection(proxyHost, proxyPort, host, port);
-        } else if (connection.equals("SOCKS5")) {
+            break;
+        }
+        case "SOCKS5": {
             String proxyHost = props.getProperty("ServerName");
             int proxyPort = Integer.parseInt(props.getProperty("ServerPort"));
             String proxyUsername = props.getProperty("Username");
             String proxyPassword = props.getProperty("Password");
             this.connection = new SocksConnection(proxyHost, proxyPort, proxyUsername, proxyPassword, host, port);
-        } else if (connection.equals("HTTP")) {
+            break;
+        }
+        case "HTTP": {
             String proxyHost = props.getProperty("ServerName");
             int proxyPort = Integer.parseInt(props.getProperty("ServerPort"));
             String proxyUsername = props.getProperty("Username");
@@ -238,6 +244,8 @@ log.info("status: " + status);
             } else {
                 this.connection = new HttpConnection(proxyHost, proxyPort, proxyUsername, proxyPassword, host, port);
             }
+            break;
+        }
         }
     }
 
@@ -321,7 +329,7 @@ log.info("status: " + status);
     public void changeStatus(Integer statusFlag) {
         // this is how ICQ would do it
 //      sendToWriterThread(new ClientSetStatusCommand(seqNum++, statusFlag.intValue()));
-        sendToWriterThread(new ClientSetLocationInfoCommand(sequenceNumber++, statusFlag.intValue()));
+        sendToWriterThread(new ClientSetLocationInfoCommand(sequenceNumber++, statusFlag));
     }
 
     /** */

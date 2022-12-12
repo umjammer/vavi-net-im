@@ -150,7 +150,7 @@ public abstract class Protocol {
     public abstract String getProtocolName();
 
     /** */
-    public static enum Feature {
+    public enum Feature {
         /**
          * Determines whether this protocol will notify you if a user attempts
          * to add you to his / her buddy list.
@@ -212,7 +212,7 @@ public abstract class Protocol {
          * other operations.
          */
         InvisibleSupported,
-    };
+    }
 
     /** */
     protected Map<Feature, Boolean> features = new HashMap<>();
@@ -523,7 +523,7 @@ Debug.println("session not found: " + buddy.getUsername());
      */
     /** */
     public String[] getSupportedStatusMessages() {
-        return statusMap.keySet().toArray(new String[statusMap.size()]);
+        return statusMap.keySet().toArray(new String[0]);
     }
 
     /**
@@ -581,37 +581,35 @@ Debug.println("session not found: " + buddy.getUsername());
     //---
 
     /** for Session */
-    private IMListener defaultImListener = new IMListener() {
-        public void eventHappened(IMEvent event) throws IOException {
-            Name name = event.getName();
-            if (name instanceof IMEventName) {
-                IMEventName eventName = (IMEventName) name; 
-                switch (eventName) {
-                case quitSession: {
-                    Session session = (Session) event.getArguments()[0];
-                    quitSessionInternal(session);
-                }
-                    break;
-                case sendSessionMessage: {
-                    Session session = (Session) event.getArguments()[0];
-                    Message message = (Message) event.getArguments()[1];
-                    sendSessionMessageInternal(session, message);
-                }
-                    break;
-                case sendInstantMessage: {
+    private IMListener defaultImListener = event -> {
+        Name name = event.getName();
+        if (name instanceof IMEventName) {
+            IMEventName eventName = (IMEventName) name;
+            switch (eventName) {
+            case quitSession: {
+                Session session = (Session) event.getArguments()[0];
+                quitSessionInternal(session);
+            }
+                break;
+            case sendSessionMessage: {
+                Session session = (Session) event.getArguments()[0];
+                Message message = (Message) event.getArguments()[1];
+                sendSessionMessageInternal(session, message);
+            }
+                break;
+            case sendInstantMessage: {
 //Debug.println("here 2");
-                    Session session = (Session) event.getArguments()[0];
-                    Message message = (Message) event.getArguments()[1];
-                    sendInstantMessageInternal(session, message);
-                }
-                    break;
-                case addParticipant: {
-                    Session session = (Session) event.getArguments()[0];
-                    Buddy[] buddies = (Buddy[]) event.getArguments()[1];
-                    // TODO
-                }
-                    break;
-                }
+                Session session = (Session) event.getArguments()[0];
+                Message message = (Message) event.getArguments()[1];
+                sendInstantMessageInternal(session, message);
+            }
+                break;
+            case addParticipant: {
+                Session session = (Session) event.getArguments()[0];
+                Buddy[] buddies = (Buddy[]) event.getArguments()[1];
+                // TODO
+            }
+                break;
             }
         }
     };

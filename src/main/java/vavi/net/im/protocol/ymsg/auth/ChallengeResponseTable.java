@@ -36,14 +36,14 @@ class ChallengeResponseTable {
      * 
      */
     private static long yahoo_auth_fibonacci(long challenge, int divisor, int outer_loop, int inner_loop) {
-        long hash = (challenge & 0xff) * 0x9e3779b1;
+        long hash = (challenge & 0xff) * 0x9e3779b1L;
 
         hash ^= (challenge >> 0x08) & 0xff;
-        hash *= 0x9e3779b1;
+        hash *= 0x9e3779b1L;
         hash ^= (challenge >> 0x10) & 0xff;
-        hash *= 0x9e3779b1;
+        hash *= 0x9e3779b1L;
         hash ^= (challenge >> 0x18) & 0xff;
-        hash *= 0x9e3779b1;
+        hash *= 0x9e3779b1L;
 
         if (outer_loop > 1) {
 
@@ -53,7 +53,7 @@ class ChallengeResponseTable {
 
             outer_loop--;
             challenge *= 0x10dcd;
-            challenge &= 0xffffffffl;
+            challenge &= 0xffffffffL;
 //System.out.println("LOOK3:" + challenge + ":" + hash);
 
             try {
@@ -76,7 +76,7 @@ class ChallengeResponseTable {
                 }
             } catch (ArrayIndexOutOfBoundsException e) {
 e.printStackTrace(System.err);
-                Debug.println(e.toString() + ", " + inner_loop + ", " + remainder);
+                Debug.println(e + ", " + inner_loop + ", " + remainder);
             }
         }
 
@@ -151,7 +151,7 @@ e.printStackTrace(System.err);
      * 
      */
     private static long yahoo_auth_typethree(long challenge, int divisor, int outer_loop, int inner_loop, int offset) {
-        long new_challenge = (yahoo_auth_read3(offset, (int) ((challenge >> 0x18) & 0xff)) & 0xff) << 0x18;
+        long new_challenge = (long) (yahoo_auth_read3(offset, (int) ((challenge >> 0x18) & 0xff)) & 0xff) << 0x18;
 
         new_challenge |= (yahoo_auth_read3(offset, (int) (challenge >> 0x10) & 0xff) & 0xff) << 0x10;
         new_challenge |= (yahoo_auth_read3(offset, (int) (challenge >> 0x08) & 0xff) & 0xff) << 0x8;
@@ -179,7 +179,7 @@ e.printStackTrace(System.err);
      */
     static long yahoo_auth_finalCountdown(long challenge, int divisor, int inner_loop, int outer_loop) {
 
-        int remainder = (int) ((challenge & 0xffffffffl) % divisor);
+        int remainder = (int) ((challenge & 0xffffffffL) % divisor);
 
         try {
             int[] ft = FunctionList.values[inner_loop][remainder];
@@ -202,7 +202,7 @@ e.printStackTrace(System.err);
                 break;
             }
         } catch (ArrayIndexOutOfBoundsException e) {
-            Debug.println(e.toString() + ", " + inner_loop + ", " + remainder);
+            Debug.println(e + ", " + inner_loop + ", " + remainder);
         }
 
         return challenge;

@@ -133,7 +133,7 @@ public class YmsgPacketHeader {
         AUDIBLE(0xd0),
         WEBLOGIN(0x0226),
         SMS_MSG(0x02ea);
-        int value;
+        final int value;
         Event(int value) {
             this.value = value;
         }
@@ -148,7 +148,7 @@ public class YmsgPacketHeader {
             }
             throw new IllegalArgumentException(String.valueOf(value));
         }
-    };
+    }
 
     /** */
     private Event event;
@@ -171,8 +171,8 @@ public class YmsgPacketHeader {
         WEBLOGIN(0x5a55aa55, false),
         OFFLINE(0x5a55aa56, false), /* don't ask */
         TYPING(0x16, false);
-        int value;
-        boolean away;
+        final int value;
+        final boolean away;
         Status(int value, boolean away) {
             this.value = value;
             this.away = away;
@@ -191,7 +191,7 @@ public class YmsgPacketHeader {
             }
             throw new IllegalArgumentException(String.valueOf(value));
         }
-    };
+    }
 
     /** */
     private int status;

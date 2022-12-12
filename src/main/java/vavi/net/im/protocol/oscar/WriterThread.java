@@ -33,7 +33,7 @@ public class WriterThread extends Thread {
     /**
      * The buffer from which to read.
      */
-    private List<Command> buffer;
+    private final List<Command> buffer;
 
     /**
      * Flag to stop this thread.
@@ -105,7 +105,7 @@ log.severe("writerThread interrupted!");
                     ByteUtils.dump(cmdBytes, sw);
 
 //log.fine(sw.toString());
-log.severe(">>> SENDING: \n" + sw.toString());
+log.severe(">>> SENDING: \n" + sw);
                     conn.write(cmdBytes);
                     conn.flush();
                 }

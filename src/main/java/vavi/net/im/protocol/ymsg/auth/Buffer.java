@@ -86,17 +86,17 @@ final class Buffer {
                 switch (n) {
                 case 0:
 //System.err.println("type 3: " + tmpBuffer.size());
-                    type3list = tmpBuffer.toArray(new Buffer[tmpBuffer.size()]);
+                    type3list = tmpBuffer.toArray(new Buffer[0]);
                     break;
                 case 1:
 //System.err.println("type 4: " + tmpBuffer.size());
-                    type4list = tmpBuffer.toArray(new Buffer[tmpBuffer.size()]);
+                    type4list = tmpBuffer.toArray(new Buffer[0]);
                     break;
                 case 2:
 //System.err.println("type 5: " + tmpBuffer.size());
-                    type5list = tmpBuffer.toArray(new Buffer[tmpBuffer.size()]);
+                    type5list = tmpBuffer.toArray(new Buffer[0]);
                     break;
-                };
+                }
                 n++;
             }
         } catch (Exception e) {

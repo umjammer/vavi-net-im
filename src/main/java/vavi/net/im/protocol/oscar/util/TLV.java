@@ -200,11 +200,10 @@ public class TLV {
      * @see java.lang.Object#toString()
      */
     public String toString() {
-        StringBuilder sb = new StringBuilder(100);
-        sb.append("\nTLV : type=0x").append(Integer.toHexString(type)).append(" length=");
-        sb.append(length).append(" string value=").append(ByteUtils.toString(value));
-        sb.append(" value=").append(ByteUtils.toHexString(value));
+        String sb = "\nTLV : type=0x" + Integer.toHexString(type) + " length=" +
+                length + " string value=" + ByteUtils.toString(value) +
+                " value=" + ByteUtils.toHexString(value);
 
-        return sb.toString();
+        return sb;
     }
 }

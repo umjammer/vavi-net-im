@@ -10,5 +10,5 @@ import java.util.EventListener;
  * IP Messenger Event Listener Interface
  */
 public interface IpmListener extends EventListener {
-    public void eventOccured(IpmEvent ev);
+    void eventOccured(IpmEvent ev);
 }

@@ -48,7 +48,7 @@ public enum OscarEventName implements Name {
     /**
      * @args int, byte[] 
      */
-    clientReady;
+    clientReady
 }
 
 /* */

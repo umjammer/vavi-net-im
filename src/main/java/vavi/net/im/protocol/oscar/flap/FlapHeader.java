@@ -112,12 +112,11 @@ public class FlapHeader {
      * @see java.lang.Object#toString()
      */
     public String toString() {
-        StringBuilder sb = new StringBuilder(30);
-        sb.append("FlapHeader :").append("\t").append("preamble=").append("0x2A\t");
-        sb.append("channelid=").append(channelId).append("\t").append("sequenceNumber=");
-        sb.append(sequenceNumber).append("\tdataLength=").append(dataLength);
+        String sb = "FlapHeader :" + "\t" + "preamble=" + "0x2A\t" +
+                "channelid=" + channelId + "\t" + "sequenceNumber=" +
+                sequenceNumber + "\tdataLength=" + dataLength;
 
-        return sb.toString();
+        return sb;
     }
 
     /**
@@ -133,7 +132,7 @@ public class FlapHeader {
         int pos = 0;
 
         while (pos < hdr.length) {
-            final int count = conn.read(hdr, pos, hdr.length - pos);
+            int count = conn.read(hdr, pos, hdr.length - pos);
 
             // check the count to make sure we didn't hit EOF or lose connection
             if (count == -1) {

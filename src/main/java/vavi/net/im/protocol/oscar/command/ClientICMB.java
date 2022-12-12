@@ -9,6 +9,7 @@ package vavi.net.im.protocol.oscar.command;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 
 import vavi.net.im.protocol.oscar.flap.FlapConstants;
 import vavi.net.im.protocol.oscar.flap.FlapHeader;
@@ -62,21 +63,17 @@ public class ClientICMB extends Command {
         int encoding = 0x0002; // UTF-16BE
 
         byte[] msgTextBytes = null;
-        try {
-            switch (encoding) {
-            case 0x0000:
-                msgTextBytes = msgContent.getBytes("US-ASCII");
-                break;
-            case 0x0002:
-                msgTextBytes = msgContent.getBytes("UTF-16BE");
-                break;
-            case 0x0003:
-            default:
-                msgTextBytes = msgContent.getBytes();
-                break;
-            }
-        } catch (UnsupportedEncodingException e) {
-            assert false;
+        switch (encoding) {
+        case 0x0000:
+            msgTextBytes = msgContent.getBytes(StandardCharsets.US_ASCII);
+            break;
+        case 0x0002:
+            msgTextBytes = msgContent.getBytes(StandardCharsets.UTF_16BE);
+            break;
+        case 0x0003:
+        default:
+            msgTextBytes = msgContent.getBytes();
+            break;
         }
 
         byte[] tlvData = new byte[msgTextBytes.length + 4];

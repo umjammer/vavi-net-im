@@ -313,7 +313,7 @@ public class IMEvent extends EventObject {
          * @arguments Session, Message
          * @see "Protocol#defaultImListener"
          */
-        sendInstantMessage;
+        sendInstantMessage
     }
 
     /** イベントの ID 名 */

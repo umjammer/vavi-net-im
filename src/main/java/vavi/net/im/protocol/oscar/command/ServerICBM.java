@@ -9,6 +9,7 @@ package vavi.net.im.protocol.oscar.command;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -134,7 +135,7 @@ public class ServerICBM extends Command {
                     // 0x0f: TIME online time in seconds
                     // 0x1d: UNKNOWN (???)
                     // 0x03: TIME user login timestamp
-                    Debug.print("OUTER: " + tlv.toString());
+                    Debug.print("OUTER: " + tlv);
                 }
             }
         }
@@ -155,7 +156,7 @@ public class ServerICBM extends Command {
                 } else if (element.getType() == TLV_MSG_TEXT) { // 0x0101
                     processMessageText(element);
                 } else {
-                    Debug.print("INNER: " + element.toString());
+                    Debug.print("INNER: " + element);
                 }
             }
         }
@@ -181,22 +182,17 @@ Debug.print("<<< RECEIVED:\n" + StringUtil.getDump(value));
         int unknown = ByteUtils.getUShort(value, 2);
         System.arraycopy(value, 4, text, 0, value.length - 4);
 
-        try {
-            switch (encoding) {
-            case 0x0000:
-                message = new String(text, "US-ASCII");
-                break;
-            case 0x0002:
-                message = new String(text, "UTF-16BE");
-                break;
-            case 0x0003:
-            default: 
-                message = new String(text);
-                break;
-            }
-        } catch (UnsupportedEncodingException e) {
-Debug.printStackTrace(e);
+        switch (encoding) {
+        case 0x0000:
+            message = new String(text, StandardCharsets.US_ASCII);
+            break;
+        case 0x0002:
+            message = new String(text, StandardCharsets.UTF_16BE);
+            break;
+        case 0x0003:
+        default:
             message = new String(text);
+            break;
         }
     }
 

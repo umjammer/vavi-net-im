@@ -46,11 +46,11 @@ public class IpmPacket {
     /** */
     private void pack() {
         StringBuilder sb = new StringBuilder();
-        sb.append(String.valueOf(version)).append(":");
-        sb.append(String.valueOf(no)).append(":");
+        sb.append(version).append(":");
+        sb.append(no).append(":");
         sb.append(user).append(":");
         sb.append(host).append(":");
-        sb.append(Long.toString(command)).append(":");
+        sb.append(command).append(":");
         sb.append(extra);
 
         String tmpString = new String(sb);
@@ -65,7 +65,7 @@ public class IpmPacket {
             assert false;
         }
 
-        final byte[] nullByte = { 0 };
+        byte[] nullByte = { 0 };
         bb.put(nullByte);
         if (group != null && !group.equals("")) {
             try {
@@ -137,10 +137,7 @@ public class IpmPacket {
             user = tokenizer.nextToken();
             host = tokenizer.nextToken();
             command = Long.parseLong(tokenizer.nextToken());
-        } catch (NoSuchElementException e) {
-            e.printStackTrace(System.err);
-            return;
-        } catch (NumberFormatException e) {
+        } catch (NoSuchElementException | NumberFormatException e) {
             e.printStackTrace(System.err);
             return;
         }
@@ -154,8 +151,8 @@ public class IpmPacket {
 
     /** */
     public boolean equals(Object target) {
-        if (IpmPacket.class.isInstance(target)) {
-            IpmPacket packet = IpmPacket.class.cast(target);
+        if (target instanceof IpmPacket) {
+            IpmPacket packet = (IpmPacket) target;
             if (user.equals(packet.getUser()) && host.equals(packet.getHost()) &&
                 (no == packet.getNo()) && (command == packet.getCommand())) {
                 return true;
