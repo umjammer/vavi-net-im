@@ -12,6 +12,7 @@ import java.nio.file.Paths;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.EnabledIf;
 import vavi.util.properties.annotation.Property;
 import vavi.util.properties.annotation.PropsEntity;
 
@@ -24,6 +25,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @author <a href="mailto:vavivavi@yahoo.co.jp">Naohide Sano</a> (nsano)
  * @version 0.00 061108 nsano initial version <br>
  */
+@EnabledIf("localPropertiesExists")
 @PropsEntity(url = "file:local.properties")
 class ChallengeResponseV11Test {
 
