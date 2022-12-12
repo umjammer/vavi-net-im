@@ -600,7 +600,7 @@ public class Ipmessenger implements CommunicationListener {
                 privateKey = kf.generatePrivate(privspec);
             } catch (Exception e) {
                 KeyPairGenerator kpg = KeyPairGenerator.getInstance("RSA");
-                kpg.initialize(1024);
+                kpg.initialize(2048);
 
                 KeyPair kp = kpg.generateKeyPair();
                 publicKey = kp.getPublic();
